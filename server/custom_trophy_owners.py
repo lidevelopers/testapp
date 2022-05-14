@@ -4,6 +4,9 @@ CUSTOM_TROPHY_OWNERS = {
     "GrohochetGrom": (
         ("liantichess", "acwc21"),
     ),
+    "Kex09": (
+        ("liantichess", "acwc22"),
+    ),    
     "SriMethan": (
         ("liantichess", "developer"),
         ("liantichess", "moderator"),

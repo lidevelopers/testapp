@@ -245,6 +245,7 @@ TROPHIES = {
     "top100": (static_url("images/trophy/Gold-Cup.png"), "Top 100!"),
     "shield": (static_url("images/trophy/shield-gold.png"), "Shield"),
     "acwc21": (static_url("images/trophy/acwc21.png"), "2021 Champion"),
+    "acwc22": (static_url("images/trophy/acwc22.png"), "2022 Champion"),
     "developer": (static_url("images/trophy/developer.png"), "Developer"),
     "moderator": (static_url("images/trophy/moderator.png"), "Moderator"),
     "marathon15": (static_url("images/trophy/marathon15.png"), "2022 Spring Marathon Top 15!"),
