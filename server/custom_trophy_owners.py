@@ -23,6 +23,7 @@ CUSTOM_TROPHY_OWNERS = {
     ),
     "ChangeOpening": (
         ("liantichess", "marathon5"),
+        ("liantichess", "moderator"),
     ),
     "Schizophrenic_Energy": (
         ("liantichess", "marathon5"),
