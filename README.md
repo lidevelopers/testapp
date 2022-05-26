@@ -16,6 +16,9 @@ For move generation, validation, analysis and engine play it uses
 
 On client side it is based on [chessgroundx](https://github.com/gbtami/chessgroundx) fork of [chessground](https://github.com/ornicar/chessground)
 
+For managing titles it uses
+- [Liantichesstitles](https://github.com/SriMethan/liantichesstitles)
+
 ##
 
 liantichess is a free server and it will remain free forever.
