@@ -18,6 +18,9 @@ CUSTOM_TROPHY_OWNERS = {
         ("liantichess", "marathon1"),
         ("liantichess", "acwc22"),
     ),
+    "sudenurk2": (
+        ("liantichess", "acwc22"),
+    ),    
     "ElsaSchneider": (
         ("liantichess", "marathon5"),
     ),
