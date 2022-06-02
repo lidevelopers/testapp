@@ -13,7 +13,7 @@
   "bugs": {
     "url": "https://github.com/SriMethan/liantichess/issues"
   },
-  "funding": "patreon.com/srimethan",
+  "funding": "https://patreon.com/srimethan",
   "dependencies": {
     "chessgroundx": "^9.1.9",
     "ffish-es6": "^0.6.8",
