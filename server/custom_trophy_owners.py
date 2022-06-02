@@ -19,7 +19,7 @@ CUSTOM_TROPHY_OWNERS = {
         ("liantichess", "acwc22"),
     ),
     "sudenurk2": (
-        ("liantichess", "acwc22"),
+        ("antichess", "wacwc22"),
     ),    
     "ElsaSchneider": (
         ("liantichess", "marathon5"),
