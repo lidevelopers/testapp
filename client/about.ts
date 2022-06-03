@@ -1,10 +1,10 @@
 import { h, VNode } from 'snabbdom';
 
 import { _ } from './i18n';
-import { model } from './main';
+import { PyChessModel } from "./types";
 
 
-export function aboutView(): VNode[] {
+export function aboutView(model: PyChessModel): VNode[] {
     const untitled = [
         _("Many Thanks to gbtami and pychess developers to derive this project."),
     ]

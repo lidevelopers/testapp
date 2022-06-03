@@ -3,21 +3,20 @@ import Sockette from 'sockette';
 import { h, VNode } from 'snabbdom';
 
 import { Chessground } from 'chessgroundx';
+import { Api } from "chessgroundx/api";
 
-import { JSONObject } from './types';
+import { JSONObject, PyChessModel } from './types';
 import { _ } from './i18n';
 import { patch } from './document';
-import { chatMessage, chatView } from './chat';
+import { chatMessage, chatView, IChatController } from './chat';
 //import { sound } from './sound';
 import { VARIANTS, uci2LastMove, Variant } from './chess';
 import { timeControlStr } from "./view";
-import { initializeClock, localeOptions } from './datetime';
-import { gameType } from './profile';
+import { initializeClock, localeOptions } from './tournamentClock';
+import { gameType } from './result';
 import { boardSettings } from './boardSettings';
-import { Api } from "chessgroundx/api";
-import { PyChessModel } from "./main";
 import { MsgBoard, MsgChat, MsgFullChat, MsgSpectators, MsgGameEnd, MsgNewGame } from "./messages";
-import * as cg from 'chessgroundx/types';
+import { MsgUserStatus, MsgGetGames, TournamentGame, MsgTournamentStatus, MsgUserConnectedTournament, MsgGetPlayers, TournamentPlayer, MsgError, MsgPing, TopGame } from './tournamentType';
 
 const T_STATUS = {
     0: "created",
@@ -33,9 +32,6 @@ const SCORE_SHIFT = 100000;
 
 const SHIELD = 's';
 
-interface MsgUserStatus {
-    ustatus: string;
-}
 
 interface MsgGetGames {
     rank: number;
@@ -159,7 +155,6 @@ export default class TournamentController {
     secondsToFinish: number;
     username: string;
     anon: boolean;
-    
 
     constructor(el: HTMLElement, model: PyChessModel) {
         console.log("TournamentController constructor", el, model);
@@ -207,6 +202,7 @@ export default class TournamentController {
         this.username = model["username"];
         this.anon = model["anon"] === "True";
 
+        boardSettings.assetURL = model.assetURL;
         boardSettings.updateBoardAndPieceStyles();
     }
 
