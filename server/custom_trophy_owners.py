@@ -27,6 +27,7 @@ CUSTOM_TROPHY_OWNERS = {
     "ChangeOpening": (
         ("liantichess", "marathon5"),
         ("liantichess", "moderator"),
+        ("antichess", "acswc22"),
     ),
     "Schizophrenic_Energy": (
         ("liantichess", "marathon5"),
