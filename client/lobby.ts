@@ -888,7 +888,7 @@ export function lobbyView(model: PyChessModel): VNode[] {
             h('posts', [
                 // TODO: create news documents in mongodb and load latest 3 dinamically here
                 h('a.post', { attrs: {href: '/news/fools'} }, [
-                    h('img', { attrs: {src: model["asset-url"] + '/images/fools.jpg'} }),
+                    h('img', { attrs: {src: model["assetURL"] + '/images/fools.jpg'} }),
                     h('span.text', [
                         h('strong', "[April Fools] Liantichess's database is running out"),
                         h('span', 'Liantichess Mongodb database has running out of space, It will delete all your games, and all the user accounts.'),
