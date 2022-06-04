@@ -896,7 +896,7 @@ export function lobbyView(model: PyChessModel): VNode[] {
                     h('time', '2022.04.01'),
                 ]),
                 h('a.post', { attrs: {href: '/news/analysis'} }, [
-                    h('img', { attrs: {src: model["asset-url"] + '/images/analysis.png'} }),
+                    h('img', { attrs: {src: model["assetURL"] + '/images/analysis.png'} }),
                     h('span.text', [
                         h('strong', "What's up on liantichess"),
                         h('span', 'Exciting stuff is going on. Lets keep you in the loop.'),
@@ -904,7 +904,7 @@ export function lobbyView(model: PyChessModel): VNode[] {
                     h('time', '2022.03.25'),
                 ]),
                 h('a.post', { attrs: {href: '/news/variants'} }, [
-                    h('img', { attrs: {src: model["asset-url"] + '/images/variants.png'} }),
+                    h('img', { attrs: {src: model["assetURL"] + '/images/variants.png'} }),
                     h('span.text', [
                         h('strong', "How to play the variants on liantichess?"),
                         h('span', 'antichess opening strategies does not work in the antichess variants'),
