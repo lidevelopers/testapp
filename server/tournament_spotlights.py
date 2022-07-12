@@ -8,7 +8,7 @@ from const import (
 
 
 def tournament_spotlights(tournaments):
-    to_date = datetime.now().date()
+    to_date = (datetime.now() + timedelta(days=1)).date()
     items = []
     for tid, tournament in sorted(tournaments.items(), key=lambda item: item[1].starts_at):
         if tournament.status == T_STARTED or (
