@@ -6,7 +6,7 @@
         <span class="text"><a href="/@/SriMethan">@SriMethan</a></span>
         <span class="text">Announcements</span>
     </div>
-    <div class= "headline">Liantichess Mongodb database is running out of space, It will delete all your games, and all the user accounts.</div>
+    <div class= "headline">Liantichess Mongodb database is running out of space, It will delete all your games, and all the user accounts, and it will empty the oceans, silence the birds and shut down the sun.</div>
 </div>
 </br>
 

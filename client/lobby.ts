@@ -886,11 +886,19 @@ export function lobbyView(model: PyChessModel): VNode[] {
         h('under-lobby', [
             h('posts', [
                 // TODO: create news documents in mongodb and load latest 3 dinamically here
+                h('a.post', { attrs: {href: '/news/summer'} }, [
+                    h('img', { attrs: {src: model["assetURL"] + '/images/summer.png'} }),
+                    h('span.text', [
+                        h('strong', "Liantichess Summer Marathon Tournament"),
+                        h('span', 'Antichess Marathon #2'),
+                    ]),
+                    h('time', '2022.07.12'),
+                ]),                
                 h('a.post', { attrs: {href: '/news/fools'} }, [
                     h('img', { attrs: {src: model["assetURL"] + '/images/fools.jpg'} }),
                     h('span.text', [
                         h('strong', "[April Fools] Liantichess's database is running out"),
-                        h('span', 'Liantichess Mongodb database has running out of space, It will delete all your games, and all the user accounts.'),
+                        h('span', 'Liantichess Mongodb database is running out of space, It will delete all your games, and all the user accounts, and it will empty the oceans, silence the birds and shut down the sun.),
                     ]),
                     h('time', '2022.04.01'),
                 ]),
@@ -901,14 +909,6 @@ export function lobbyView(model: PyChessModel): VNode[] {
                         h('span', 'Exciting stuff is going on. Lets keep you in the loop.'),
                     ]),
                     h('time', '2022.03.25'),
-                ]),
-                h('a.post', { attrs: {href: '/news/variants'} }, [
-                    h('img', { attrs: {src: model["assetURL"] + '/images/variants.png'} }),
-                    h('span.text', [
-                        h('strong', "How to play the variants on liantichess?"),
-                        h('span', 'antichess opening strategies does not work in the antichess variants'),
-                    ]),
-                    h('time', '2022.03.11'),
                 ]),
             ]),
         ]),
