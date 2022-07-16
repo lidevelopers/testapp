@@ -17,9 +17,15 @@ for f in *.md; do
 done
 
 
+<<<<<<< HEAD
 SRC='https://github.com/SriMethan/liantichess/blob/master'; 
 #DST='https://liantichess.herokuapp.com';
 DST='https://cdn.jsdelivr.net/gh/gbtami/pychess-variants\@1.7.7';
+=======
+SRC='https://github.com/gbtami/pychess-variants/blob/master'; 
+#DST='https://www.pychess.org';
+DST='https://cdn.jsdelivr.net/gh/gbtami/pychess-variants\@1.8.2';
+>>>>>>> d1cac9fa6bcb0fd1da361ceebbce10a86f8b0c03
 find . -type f -name "*.html" -exec perl -pi -e s,$SRC,$DST,g '{}' +
 
 mkdir -p ../../templates/docs
