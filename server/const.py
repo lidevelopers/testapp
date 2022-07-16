@@ -99,7 +99,7 @@ VARIANTS = (
     "coffeehill",
     "coffeehill960",
     "antiplacement",
-    "antihoppelpoppel",
+#    "antihoppelpoppel",
 #    "antishogun",
     "anticapablanca",
     "antichak",
