@@ -19,7 +19,7 @@ import { movetimeChart } from './movetimeChart';
 import { renderClocks } from './analysisClock';
 import { copyBoardToPNG } from './png';
 import { boardSettings } from './boardSettings';
-import { patch, downloadPgnText, getPieceImageUrl } from './document';
+import { patch, downloadPgnText } from './document';
 import { variantsIni } from './variantsIni';
 import { Chart } from "highcharts";
 import { PyChessModel } from "./types";
@@ -63,6 +63,7 @@ export class AnalysisController extends GameController {
     arrow: boolean;
     importedBy: string;
     embed: boolean;
+    fsfEngineBoard: any;  // used to convert pv UCI move list to SAN
 
     constructor(el: HTMLElement, model: PyChessModel) {
         super(el, model);
@@ -404,6 +405,8 @@ export class AnalysisController extends GameController {
         if (!this.localEngine) {
             this.localEngine = true;
             patch(document.getElementById('input') as HTMLElement, h('input#input', {attrs: {disabled: false}}));
+            this.fsfEngineBoard = new this.ffish.Board(this.variant.name, this.fullfen, this.chess960);
+            window.addEventListener('beforeunload', () => this.fsfEngineBoard.delete());
         }
 
         if (!this.localAnalysis || !this.isEngineReady) return;
@@ -483,12 +486,7 @@ export class AnalysisController extends GameController {
                 if (atPos > -1) {
                     const d = pv_move.slice(atPos + 1, atPos + 3) as cg.Key;
                     let color = turnColor;
-                    const variant = this.variant.name;
                     const dropPieceRole = util.roleOf(pv_move.slice(0, atPos) as cg.PieceLetter);
-                    const orientation = this.flipped() ? this.oppcolor : this.mycolor;
-                    const side = color === orientation ? "ally" : "enemy";
-                    const url = getPieceImageUrl(variant, dropPieceRole, color, side);
-                    this.chessground.set({ drawable: { pieces: { baseUrl: url! } } });
 
                     shapes0 = [{
                         orig: d,
@@ -497,7 +495,7 @@ export class AnalysisController extends GameController {
                             color: color,
                             role: dropPieceRole
                         }},
-                        { orig: d, brush: 'paleGreen'}
+                        { orig: d, brush: 'paleGreen' }
                     ];
                 } else {
                     const o = pv_move.slice(0, 2) as cg.Key;
@@ -521,10 +519,10 @@ export class AnalysisController extends GameController {
             }
             this.vinfo = patch(this.vinfo, h('info#info', info));
             let pvSan = ceval.p;
-            if (this.ffishBoard) {
+            if (this.fsfEngineBoard) {
                 try {
-                    this.ffishBoard.setFen(this.fullfen);
-                    pvSan = this.ffishBoard.variationSan(ceval.p, this.notationAsObject);
+                    this.fsfEngineBoard.setFen(this.fullfen);
+                    pvSan = this.fsfEngineBoard.variationSan(ceval.p, this.notationAsObject);
                     if (pvSan === '') pvSan = '.';
                 } catch (error) {
                     pvSan = '.';
@@ -728,9 +726,7 @@ export class AnalysisController extends GameController {
             'sanSAN': sanSAN,
             };
 
-        // Possible this should be fixed in ffish.js
-        const blackStarts = this.steps[0].turnColor === 'black';
-        const ffishBoardPly = this.ffishBoard.gamePly() + ((blackStarts) ? -1 : 0);
+        const ffishBoardPly = this.ffishBoard.moveStack().split(' ').length;
         // New main line move
         if (ffishBoardPly === this.steps.length && this.plyVari === 0) {
             this.steps.push(step);
@@ -741,7 +737,7 @@ export class AnalysisController extends GameController {
         // variation move
         } else {
             // possible new variation move
-            if (this.ffishBoard.moveStack().split(' ').length === 1) {
+            if (ffishBoardPly === 1) {
                 if (msg.lastMove === this.steps[this.ply - 1].move) {
                     // existing main line played
                     selectMove(this, this.ply);
