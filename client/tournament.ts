@@ -10,7 +10,7 @@ import { _ } from './i18n';
 import { patch } from './document';
 import { chatMessage, chatView, IChatController } from './chat';
 //import { sound } from './sound';
-import { colorIcon, VARIANTS, uci2LastMove, Variant } from './chess';
+import { VARIANTS, uci2LastMove, Variant } from './chess';
 import { timeControlStr } from "./view";
 import { initializeClock, localeOptions } from './tournamentClock';
 import { gameType } from './result';
@@ -432,7 +432,17 @@ export default class TournamentController {
                 ]),
                 h('td', game.rating),
                 h('td', [
-                    h('i-side.icon', {class: {[colorIcon(this.variant.name, color)]: true}}),
+                    h('i-side.icon', {
+                        class: {
+                            "icon-white": color === "White",
+                            "icon-black": color === "Black",
+                            "icon-red":   color === "Red",
+                            "icon-blue":  color === "Blue",
+                            "icon-gold":  color === "Gold",
+                            "icon-pink":  color === "Pink",
+                            "icon-green": color === "Green",
+                        }
+                    }),
                 ]),
                 this.result(game.result, game.color),
             ]);
