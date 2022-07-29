@@ -886,6 +886,14 @@ export function lobbyView(model: PyChessModel): VNode[] {
         h('under-lobby', [
             h('posts', [
                 // TODO: create news documents in mongodb and load latest 3 dinamically here
+                h('a.post', { attrs: {href: '/news/shield'} }, [
+                    h('img', { attrs: {src: model["assetURL"] + '/images/shieldwin.png'} }),
+                    h('span.text', [
+                        h('strong', "Aleksschtin on Antichess960 Shield Arena streak"),
+                        h('span', 'No opening theory, only pure instinct and chaos'),
+                    ]),
+                    h('time', '2022.07.15'),
+                ]), 
                 h('a.post', { attrs: {href: '/news/summer'} }, [
                     h('img', { attrs: {src: model["assetURL"] + '/images/summer.png'} }),
                     h('span.text', [
@@ -901,14 +909,6 @@ export function lobbyView(model: PyChessModel): VNode[] {
                         h('span', 'Liantichess Mongodb database is running out of space, It will delete all your games, and all the user accounts, and it will empty the oceans, silence the birds and shut down the sun.'),
                     ]),
                     h('time', '2022.04.01'),
-                ]),
-                h('a.post', { attrs: {href: '/news/analysis'} }, [
-                    h('img', { attrs: {src: model["assetURL"] + '/images/analysis.png'} }),
-                    h('span.text', [
-                        h('strong', "What's up on liantichess"),
-                        h('span', 'Exciting stuff is going on. Lets keep you in the loop.'),
-                    ]),
-                    h('time', '2022.03.25'),
                 ]),
             ]),
         ]),
