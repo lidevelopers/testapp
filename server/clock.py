@@ -1,7 +1,7 @@
 import asyncio
 import logging
 
-from const import ABORTED, CASUAL
+from const import ABORTED
 from fairy import WHITE, BLACK
 from broadcast import round_broadcast
 
@@ -16,7 +16,6 @@ class Clock:
     def __init__(self, game):
         self.game = game
         self.running = False
-        self.secs = -1
         self.restart()
         self.clock_task = asyncio.create_task(self.countdown())
 
@@ -32,13 +31,6 @@ class Clock:
         else:
             # give some time to make first move
             if self.ply < 2:
-                if self.game.rated == CASUAL:
-                    # Casual games are not timed for the first moves of either
-                    # player. We stop the clock to prevent unnecessary clock
-                    # updates and to give players unlimited time.
-                    self.running = False
-                    return
-                # Rated games have their first move time set
                 self.secs = self.time_for_first_move
             else:
                 self.secs = self.game.ply_clocks[self.ply][
@@ -48,7 +40,7 @@ class Clock:
 
     async def countdown(self):
         while True:
-            while self.running and self.secs > 0:
+            while self.secs > 0 and self.running:
                 await asyncio.sleep(1)
                 self.secs -= 1000
 

@@ -5,7 +5,7 @@ import { Api } from 'chessgroundx/api';
 
 import { _ } from './i18n';
 import { Variant, VARIANTS, BOARD_FAMILIES, PIECE_FAMILIES } from './chess';
-import { changeBoardCSS, changePieceCSS } from './document';
+import { changeBoardCSS, changePieceCSS, getPieceImageUrl } from './document';
 import { ISettings, NumberSettings, BooleanSettings } from './settings';
 import { slider, checkbox } from './view';
 import { PyChessModel } from "./types";
@@ -24,11 +24,9 @@ export interface IBoardController {
     model?: PyChessModel;
     autoPromote?: boolean;
     arrow?: boolean;
-    multipv?: number;
     blindfold?: boolean;
     materialDifference?: boolean;
     updateMaterial?: any;
-    pvboxIni?: any;
     chartFunctions?: any[];
     vmaterial0?: VNode | HTMLElement;
     vmaterial1?: VNode | HTMLElement;
@@ -47,7 +45,6 @@ class BoardSettings {
         this.settings["showDests"] = new ShowDestsSettings(this);
         this.settings["autoPromote"] = new AutoPromoteSettings(this);
         this.settings["arrow"] = new ArrowSettings(this);
-        this.settings["multipv"] = new MultiPVSettings(this);
         this.settings["blindfold"] = new BlindfoldSettings(this);
         this.settings["materialDifference"] = new MaterialDifferenceSettings(this);
     }
@@ -97,6 +94,13 @@ class BoardSettings {
             const el = document.querySelector('svg image') as HTMLElement;
             // if there is any
             if (el) {
+                const classNames = el.getAttribute('className')!.split(' ');
+                const variant = this.ctrl.variant.name
+                const role = classNames[0] as cg.Role;
+                const color = classNames[1] as cg.Color;
+                const orientation = this.ctrl.flipped() ? this.ctrl.oppcolor : this.ctrl.mycolor;
+                const side = color === orientation ? "ally" : "enemy";
+                chessground.set({ drawable: { pieces: { baseUrl: getPieceImageUrl(variant, role, color, side)! } } });
                 chessground.redrawAll();
             }
         }
@@ -143,8 +147,6 @@ class BoardSettings {
             settingsList.push(this.settings["autoPromote"].view());
 
         settingsList.push(this.settings["arrow"].view());
-
-        settingsList.push(this.settings["multipv"].view());
 
         settingsList.push(this.settings["blindfold"].view());
 
@@ -262,7 +264,7 @@ class ZoomSettings extends NumberSettings {
     }
 
     view(): VNode {
-        return h('div', slider(this, 'zoom', 0, 100, this.boardFamily.includes("shogi") ? 1 : 1.15625, _('Zoom')));
+        return slider(this, 'zoom', 0, 100, this.boardFamily.includes("shogi") ? 1 : 1.15625);
     }
 }
 
@@ -318,26 +320,6 @@ class ArrowSettings extends BooleanSettings {
 
     view(): VNode {
         return h('div', checkbox(this, 'arrow', _("Best move arrow in analysis board")));
-    }
-}
-
-class MultiPVSettings extends NumberSettings {
-    readonly boardSettings: BoardSettings;
-
-    constructor(boardSettings: BoardSettings) {
-        super('multipv', 1);
-        this.boardSettings = boardSettings;
-    }
-
-    update(): void {
-        const ctrl = this.boardSettings.ctrl;
-        if ('multipv' in ctrl)
-            ctrl.multipv = this.value;
-            ctrl.pvboxIni();
-    }
-
-    view(): VNode {
-        return h('div', slider(this, 'multipv', 1, 5, 1, _('MultiPV')));
     }
 }
 
