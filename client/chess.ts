@@ -1001,7 +1001,7 @@ const variantGroups: { [ key: string ]: { variants: string[] } } = {
     //sea:      { variants: [ "makruk", "makpong", "cambodian", "sittuyin", "asean" ] },
     //shogi:    { variants: [ "antiminishogi" ] },
     //xiangqi:  { variants: [ "xiangqi", "manchu", "janggi", "minixiangqi" ] },
-    fairy:    { variants:  ["antihoppelpoppel", "anticapablanca", "antigrandhouse"] },
+    fairy:    { variants:  ["anticapablanca", "antigrandhouse"] },
     army:     { variants: [ "antichak", "antiorda", "antisynochess", "antiempire", "antishinobi"] },
 };
 
