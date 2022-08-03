@@ -2,6 +2,8 @@ import Sockette from 'sockette';
 
 import { h, VNode } from 'snabbdom';
 
+import * as idb from 'idb-keyval';
+
 import * as cg from 'chessgroundx/types';
 import * as util from 'chessgroundx/util';
 import { DrawShape } from 'chessgroundx/draw';
@@ -61,11 +63,24 @@ export class AnalysisController extends GameController {
     notationAsObject: any;
     prevPieces: cg.Pieces;
     arrow: boolean;
+<<<<<<< HEAD
     importedBy: string;
     embed: boolean;
+=======
+    multipv: number;
+    evalFile: string;
+    nnueOk: boolean;
+    importedBy: string;
+    embed: boolean;
+    fsfDebug: boolean;
+    fsfError: string[];
+    fsfEngineBoard: any;  // used to convert pv UCI move list to SAN
+>>>>>>> 8baf6286df414025c1d48cda29c0d93d7617dddd
 
     constructor(el: HTMLElement, model: PyChessModel) {
         super(el, model);
+        this.fsfDebug = true;
+        this.fsfError = [];
         this.embed = this.gameId === undefined;
         this.isAnalysisBoard = this.gameId === "";
         if (!this.embed) {
@@ -111,6 +126,9 @@ export class AnalysisController extends GameController {
 
         this.settings = true;
         this.arrow = localStorage.arrow === undefined ? true : localStorage.arrow === "true";
+        this.multipv = localStorage.multipv === undefined ? 1 : Math.max(1, Math.min(5, parseInt(localStorage.multipv)));
+        this.evalFile = localStorage[`${this.variant.name}-nnue`] === undefined ? '' : localStorage[`${this.variant.name}-nnue`];
+        this.nnueOk = false;
         this.importedBy = '';
 
         this.chessground.set({
@@ -207,6 +225,29 @@ export class AnalysisController extends GameController {
         this.onMsgBoard(model["board"] as MsgBoard);
     }
 
+<<<<<<< HEAD
+=======
+    nnueIni() {
+        if (this.localAnalysis && this.nnueOk) {
+            this.engineStop();
+            this.engineGo();
+        }
+    }
+
+    pvboxIni() {
+        if (this.localAnalysis) this.engineStop();
+        for (let i = 4; i >= 0; i--) {
+            this.vpvlines[i] = patch(this.vpvlines[i], h(`div#pv${i + 1}`, {props: {class: {"pv": `${i + 1 <= this.multipv}`}}}));
+        }
+        if (this.localAnalysis) this.engineGo();
+    }
+
+    pvView(i: number, pv: VNode | undefined) {
+        if (this.vpvlines === undefined) this.pvboxIni();
+        this.vpvlines[i] = patch(this.vpvlines[i], h(`div#pv${i + 1}.pv`, pv));
+    }
+
+>>>>>>> 8baf6286df414025c1d48cda29c0d93d7617dddd
     toggleOrientation() {
         super.toggleOrientation()
         boardSettings.updateDropSuggestion();
@@ -216,7 +257,7 @@ export class AnalysisController extends GameController {
     private renderInput = () => {
         return {
             attrs: {
-                disabled: !this.localEngine,
+                disabled: !this.localEngine || !this.isEngineReady,
             },
             on: {change: () => {
                 this.localAnalysis = !this.localAnalysis;
@@ -390,7 +431,22 @@ export class AnalysisController extends GameController {
     }
 
     onFSFline = (line: string) => {
-        //console.log(line);
+        if (this.fsfDebug) console.debug('--->', line);
+
+        if (line.startsWith('info')) {
+            const error = 'info string ERROR: ';
+            if (line.startsWith(error)) {
+                this.fsfError.push(line.slice(error.length));
+                if (line.includes('terminated')) {
+                    const suggestion = _('Try browser page reload.');
+                    this.fsfError.push('');
+                    this.fsfError.push(suggestion);
+                    const errorMsg = this.fsfError.join('\n');
+                    alert(errorMsg);
+                    return;
+                }
+            }
+        }
 
         if (line.includes('readyok')) this.isEngineReady = true;
 
@@ -398,12 +454,35 @@ export class AnalysisController extends GameController {
             window.prompt = function() {
                 return variantsIni + '\nEOF';
             }
-            window.fsf.postMessage('load <<EOF');
+            this.fsfPostMessage('load <<EOF');
         }
 
         if (!this.localEngine) {
             this.localEngine = true;
             patch(document.getElementById('input') as HTMLElement, h('input#input', {attrs: {disabled: false}}));
+<<<<<<< HEAD
+=======
+            this.fsfEngineBoard = new this.ffish.Board(this.variant.name, this.fullfen, this.chess960);
+
+            if (this.evalFile) {
+                idb.get(`${this.variant.name}--nnue-file`).then((nnuefile) => {
+                    if (nnuefile === this.evalFile) {
+                        idb.get(`${this.variant.name}--nnue-data`).then((data) => {
+                            const array = new Uint8Array(data);
+                            const filename = "/" + this.evalFile;
+                            window.fsf.FS.writeFile(filename, array);
+                            console.log('Loaded to fsf.FS:', filename);
+                            this.nnueOk = true;
+                            const nnueEl = document.querySelector('.nnue') as HTMLElement;
+                            const title = _('Multi-threaded WebAssembly (with NNUE evaluation)');
+                            patch(nnueEl, h('span.nnue', { props: {title: title } } , 'NNUE'));
+                        });
+                    }
+                });
+            }
+
+            window.addEventListener('beforeunload', () => this.fsfEngineBoard.delete());
+>>>>>>> 8baf6286df414025c1d48cda29c0d93d7617dddd
         }
 
         if (!this.localAnalysis || !this.isEngineReady) return;
@@ -560,30 +639,47 @@ export class AnalysisController extends GameController {
 
     engineStop = () => {
         this.isEngineReady = false;
-        window.fsf.postMessage('stop');
-        window.fsf.postMessage('isready');
+        this.fsfPostMessage('stop');
+        this.fsfPostMessage('isready');
     }
 
     engineGo = () => {
         if (this.chess960) {
-            window.fsf.postMessage('setoption name UCI_Chess960 value true');
+            this.fsfPostMessage('setoption name UCI_Chess960 value true');
         }
         if (this.variant.name !== 'chess') {
-            window.fsf.postMessage('setoption name UCI_Variant value ' + this.variant.name);
+            this.fsfPostMessage('setoption name UCI_Variant value ' + this.variant.name);
         }
-        //console.log('setoption name Threads value ' + maxThreads);
-        window.fsf.postMessage('setoption name Threads value ' + maxThreads);
+        if (this.evalFile === '' || !this.nnueOk) {
+            this.fsfPostMessage('setoption name Use NNUE value false');
+        } else {
+            this.fsfPostMessage('setoption name Use NNUE value true');
+            this.fsfPostMessage('setoption name EvalFile value ' + this.evalFile);
+        }
 
+<<<<<<< HEAD
+=======
+        //console.log('setoption name Threads value ' + maxThreads);
+        this.fsfPostMessage('setoption name Threads value ' + maxThreads);
+
+        this.fsfPostMessage('setoption name MultiPV value ' + this.multipv);
+
+>>>>>>> 8baf6286df414025c1d48cda29c0d93d7617dddd
         //console.log('position fen ', this.fullfen);
-        window.fsf.postMessage('position fen ' + this.fullfen);
+        this.fsfPostMessage('position fen ' + this.fullfen);
 
         if (this.maxDepth >= 99) {
-            window.fsf.postMessage('go depth 99');
+            this.fsfPostMessage('go depth 99');
         } else {
-            window.fsf.postMessage('go movetime 90000 depth ' + this.maxDepth);
+            this.fsfPostMessage('go movetime 90000 depth ' + this.maxDepth);
         }
     }
 
+    fsfPostMessage(msg: string) {
+        if (this.fsfDebug) console.debug('<---', msg);
+        window.fsf.postMessage(msg);
+    }
+    
     // When we are moving inside a variation move list
     // then plyVari > 0 and ply is the index inside vari movelist
     goPly = (ply: number, plyVari = 0) => {
