@@ -34,8 +34,10 @@ CUSTOM_TROPHY_OWNERS = {
     ),
     "JackDanielsHoney": (
         ("liantichess", "marathon5"),
+        ("liantichess", "marathon5"),
     ),
     "Kotov_Syndrome": (
+        ("liantichess", "marathon1"),
         ("liantichess", "marathon15"),
     ),
     "Raicosta": (
@@ -44,6 +46,36 @@ CUSTOM_TROPHY_OWNERS = {
     "Nikhil_Nikhi": (
         ("liantichess", "marathon15"),
     ),
+    "mental_suicide": (
+        ("liantichess", "marathon15"),
+    ), 
+    "STEDgER": (
+        ("liantichess", "marathon15"),
+    ), 
+    "icelandically": (
+        ("liantichess", "marathon15"),
+    ), 
+    "bogdanyak": (
+        ("liantichess", "marathon15"),
+    ), 
+    "usewaxlips": (
+        ("liantichess", "marathon15"),
+    ),
+    "passionate_player": (
+        ("liantichess", "marathon15"),
+    ),
+    "Antichessdeamon13": (
+        ("liantichess", "marathon15"),
+    ),
+     "Plane_380": (
+        ("liantichess", "marathon15"),
+    ),
+    "ak1969": (
+        ("liantichess", "marathon15"),
+    ),
+    "UglySwede": (
+        ("liantichess", "marathon15"),
+    ),                                       
     "basschess_1989": (
         ("liantichess", "marathon15"),
     ),
@@ -51,11 +83,18 @@ CUSTOM_TROPHY_OWNERS = {
         ("liantichess", "marathon15"),
     ),
     "aleksschtin": (
+        ("liantichess", "marathon5"),
         ("liantichess", "marathon15"),
     ),
     "kuhar": (
         ("liantichess", "marathon15"),
     ),
+    "artem_de_puh": (
+        ("liantichess", "marathon5"),
+    ), 
+    "Cayden52": (
+        ("liantichess", "marathon5"),
+    ),        
     "nicolas647": (
         ("liantichess", "marathon15"),
     ),
