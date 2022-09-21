@@ -24,11 +24,6 @@ export interface IBoardController {
     model?: PyChessModel;
     autoPromote?: boolean;
     arrow?: boolean;
-<<<<<<< HEAD
-    blindfold?: boolean;
-    materialDifference?: boolean;
-    updateMaterial?: any;
-=======
     multipv?: number;
     evalFile?: string;
     blindfold?: boolean;
@@ -36,7 +31,6 @@ export interface IBoardController {
     updateMaterial?: any;
     pvboxIni?: any;
     nnueIni?: any;
->>>>>>> 8baf6286df414025c1d48cda29c0d93d7617dddd
     chartFunctions?: any[];
     vmaterial0?: VNode | HTMLElement;
     vmaterial1?: VNode | HTMLElement;
@@ -161,14 +155,11 @@ class BoardSettings {
 
         settingsList.push(this.settings["arrow"].view());
 
-<<<<<<< HEAD
-=======
         settingsList.push(this.settings["multipv"].view());
 
         if (variantName === this.ctrl?.variant.name)
             settingsList.push(this.getSettings("Nnue", variantName as string).view());
 
->>>>>>> 8baf6286df414025c1d48cda29c0d93d7617dddd
         settingsList.push(this.settings["blindfold"].view());
 
         settingsList.push(this.settings["materialDifference"].view());
@@ -344,8 +335,6 @@ class ArrowSettings extends BooleanSettings {
     }
 }
 
-<<<<<<< HEAD
-=======
 class MultiPVSettings extends NumberSettings {
     readonly boardSettings: BoardSettings;
 
@@ -388,7 +377,6 @@ class NnueSettings extends StringSettings {
     }
 }
 
->>>>>>> 8baf6286df414025c1d48cda29c0d93d7617dddd
 class BlindfoldSettings extends BooleanSettings {
     readonly boardSettings: BoardSettings;
 

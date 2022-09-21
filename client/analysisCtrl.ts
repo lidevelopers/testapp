@@ -63,10 +63,6 @@ export class AnalysisController extends GameController {
     notationAsObject: any;
     prevPieces: cg.Pieces;
     arrow: boolean;
-<<<<<<< HEAD
-    importedBy: string;
-    embed: boolean;
-=======
     multipv: number;
     evalFile: string;
     nnueOk: boolean;
@@ -75,7 +71,6 @@ export class AnalysisController extends GameController {
     fsfDebug: boolean;
     fsfError: string[];
     fsfEngineBoard: any;  // used to convert pv UCI move list to SAN
->>>>>>> 8baf6286df414025c1d48cda29c0d93d7617dddd
 
     constructor(el: HTMLElement, model: PyChessModel) {
         super(el, model);
@@ -225,8 +220,6 @@ export class AnalysisController extends GameController {
         this.onMsgBoard(model["board"] as MsgBoard);
     }
 
-<<<<<<< HEAD
-=======
     nnueIni() {
         if (this.localAnalysis && this.nnueOk) {
             this.engineStop();
@@ -247,7 +240,6 @@ export class AnalysisController extends GameController {
         this.vpvlines[i] = patch(this.vpvlines[i], h(`div#pv${i + 1}.pv`, pv));
     }
 
->>>>>>> 8baf6286df414025c1d48cda29c0d93d7617dddd
     toggleOrientation() {
         super.toggleOrientation()
         boardSettings.updateDropSuggestion();
@@ -460,8 +452,6 @@ export class AnalysisController extends GameController {
         if (!this.localEngine) {
             this.localEngine = true;
             patch(document.getElementById('input') as HTMLElement, h('input#input', {attrs: {disabled: false}}));
-<<<<<<< HEAD
-=======
             this.fsfEngineBoard = new this.ffish.Board(this.variant.name, this.fullfen, this.chess960);
 
             if (this.evalFile) {
@@ -482,7 +472,6 @@ export class AnalysisController extends GameController {
             }
 
             window.addEventListener('beforeunload', () => this.fsfEngineBoard.delete());
->>>>>>> 8baf6286df414025c1d48cda29c0d93d7617dddd
         }
 
         if (!this.localAnalysis || !this.isEngineReady) return;
@@ -657,14 +646,11 @@ export class AnalysisController extends GameController {
             this.fsfPostMessage('setoption name EvalFile value ' + this.evalFile);
         }
 
-<<<<<<< HEAD
-=======
         //console.log('setoption name Threads value ' + maxThreads);
         this.fsfPostMessage('setoption name Threads value ' + maxThreads);
 
         this.fsfPostMessage('setoption name MultiPV value ' + this.multipv);
 
->>>>>>> 8baf6286df414025c1d48cda29c0d93d7617dddd
         //console.log('position fen ', this.fullfen);
         this.fsfPostMessage('position fen ' + this.fullfen);
 
