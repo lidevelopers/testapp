@@ -27,9 +27,9 @@ from const import (
     TROPHY_KIND,
     RATED,
     IMPORTED,
-    variant_display_name,
-    pairing_system_name,
     T_CREATED,
+    TRANSLATED_VARIANT_NAMES,
+    TRANSLATED_PAIRING_SYSTEM_NAMES,
 )
 from fairy import FairyBoard
 from glicko2.glicko2 import DEFAULT_PERF, PROVISIONAL_PHI
@@ -47,6 +47,7 @@ from settings import (
 from generate_highscore import generate_highscore
 from misc import time_control_str
 from news import NEWS
+from videos import VIDEO_TAGS, VIDEO_TARGETS
 from user import User
 from utils import load_game, join_seek, tv_game, tv_game_user
 from tournaments import (
@@ -139,6 +140,21 @@ async def index(request):
         lang = "en"
     get_template = request.app["jinja"][lang].get_template
 
+    lang_translation = request.app["gettext"][lang]
+    lang_translation.install()
+
+    def variant_display_name(variant):
+        return lang_translation.gettext(TRANSLATED_VARIANT_NAMES[variant])
+
+    def pairing_system_name(system):
+        return lang_translation.gettext(TRANSLATED_PAIRING_SYSTEM_NAMES[system])
+
+    def video_tag(tag):
+        return lang_translation.gettext(VIDEO_TAGS[tag])
+
+    def video_target(target):
+        return lang_translation.gettext(VIDEO_TARGETS[target])
+
     view = "lobby"
     gameId = request.match_info.get("gameId")
     ply = request.rel_url.query.get("ply")
@@ -155,6 +171,9 @@ async def index(request):
         view = "news"
     elif request.path.startswith("/variants"):
         view = "variants"
+    elif request.path.startswith("/video"):
+        videoId = request.match_info.get("videoId")
+        view = "videos" if videoId is None else "video"
     elif request.path.startswith("/players"):
         view = "players"
     elif request.path == "/allplayers":
@@ -305,9 +324,6 @@ async def index(request):
             if user.username not in (game.wplayer.username, game.bplayer.username):
                 game.spectators.add(user)
 
-            if game.tournamentId is not None:
-                tournament_name = await get_tournament_name(request.app, game.tournamentId)
-
     if view in ("profile", "level8win"):
         if (profileId in users) and not users[profileId].enabled:
             template = get_template("closed.html")
@@ -332,6 +348,10 @@ async def index(request):
         template = get_template("news.html")
     elif view == "variants":
         template = get_template("variants.html")
+    elif view == "videos":
+        template = get_template("videos.html")
+    elif view == "video":
+        template = get_template("video.html")
     elif view == "patron":
         template = get_template("patron.html")
     elif view == "titled-players":
@@ -457,7 +477,7 @@ async def index(request):
         render["icons"] = VARIANT_ICONS
         render["pairing_system_name"] = pairing_system_name
         render["time_control_str"] = time_control_str
-        render["tables"] = await get_latest_tournaments(request.app)
+        render["tables"] = await get_latest_tournaments(request.app, lang_translation)
         render["admin"] = user.username in ADMINS
 
     if (gameId is not None) and gameId != "variants":
@@ -497,14 +517,16 @@ async def index(request):
             render["ct"] = json.dumps(game.crosstable)
             render["board"] = json.dumps(game.get_board(full=True))
             if game.tournamentId is not None:
+                tournament_name = await get_tournament_name(request, game.tournamentId)
                 render["tournamentid"] = game.tournamentId
                 render["tournamentname"] = tournament_name
                 render["wberserk"] = game.wberserk
                 render["bberserk"] = game.bberserk
 
     if tournamentId is not None:
+        tournament_name = await get_tournament_name(request, tournamentId)
         render["tournamentid"] = tournamentId
-        render["tournamentname"] = tournament.name
+        render["tournamentname"] = tournament_name
         render["description"] = tournament.description
         render["variant"] = tournament.variant
         render["chess960"] = tournament.chess960
@@ -542,6 +564,26 @@ async def index(request):
                 "docs/" + ("terminology" if variant is None else variant) + "%s.html" % locale
             )
 
+    elif view == "videos":
+        tag = request.rel_url.query.get("tags")
+        videos = []
+        if tag is None:
+            cursor = db.video.find()
+        else:
+            cursor = db.video.find({"tags": tag})
+
+        async for doc in cursor:
+            videos.append(doc)
+        render["videos"] = videos
+        render["tags"] = VIDEO_TAGS
+        render["video_tag"] = video_tag
+        render["video_target"] = video_target
+
+    elif view == "video":
+        render["view_css"] = "videos.css"
+        render["videoId"] = videoId
+        render["tags"] = VIDEO_TAGS
+
     elif view == "news":
         news_item = request.match_info.get("news_item")
         if (news_item is None) or (news_item not in NEWS):
@@ -570,6 +612,7 @@ async def index(request):
     try:
         text = await template.render_async(render)
     except Exception:
+        log.exception("ERROR: template.render_async() failed.")
         return web.HTTPFound("/")
 
     response = web.Response(text=html_minify(text), content_type="text/html")
@@ -596,6 +639,11 @@ async def select_lang(request):
     if lang is not None:
         referer = request.headers.get("REFERER")
         session = await aiohttp_session.get_session(request)
+        session_user = session.get("user_name")
+        users = request.app["users"]
+        if session_user in users:
+            user = users[session_user]
+            user.lang = lang
         session["lang"] = lang
         return web.HTTPFound(referer)
     else:

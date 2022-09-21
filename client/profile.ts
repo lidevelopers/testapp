@@ -3,7 +3,7 @@ import { h, VNode } from 'snabbdom';
 import { Chessground } from 'chessgroundx';
 import * as cg from "chessgroundx/types";
 
-import { _, ngettext, pgettext } from './i18n';
+import { _, ngettext, pgettext, languageSettings } from './i18n';
 import { uci2LastMove, VARIANTS } from './chess';
 import { patch } from './document';
 import { renderTimeago } from './datetime';
@@ -50,7 +50,7 @@ interface Player {
     d: number;
 }
 
-function toutnamentInfo(game: Game) {
+function tournamentInfo(game: Game) {
     let elements = [h('info-date', { attrs: { timestamp: game["d"] } })];
     if (game["tid"]) {
         elements.push(h('span', " • "));
@@ -65,18 +65,17 @@ function renderGames(model: PyChessModel, games: Game[]) {
         const chess960 = game.z === 1;
 
         return h('tr', [h('a', { attrs: { href : '/' + game["_id"] } }, [
-            h('td.board', { class: { "with-pockets": variant.pocketRoles('white') !== undefined } }, [
+            h('td.board', { class: { "with-pockets": variant.pocket } }, [
                 h(`selection.${variant.board}.${variant.piece}`, [
                     h(`div.cg-wrap.${variant.cg}.mini`, {
                         hook: {
-                            insert: vnode => Chessground(vnode.elm as HTMLElement,  {
+                            insert: vnode => Chessground(vnode.elm as HTMLElement, {
                                 coordinates: false,
                                 viewOnly: true,
                                 fen: game["f"],
                                 lastMove: uci2LastMove(game.lm),
-                                geometry: variant.geometry,
-                                addDimensionsCssVars: true,
-                                pocketRoles: color => variant.pocketRoles(color),
+                                dimensions: variant.boardDimensions,
+                                pocketRoles: variant.pocketRoles,
                             })
                         }
                     }),
@@ -87,7 +86,7 @@ function renderGames(model: PyChessModel, games: Game[]) {
                     // h('div.info1.icon', { attrs: { "data-icon": (game["z"] === 1) ? "V" : "" } }),
                     h('div.info2', [
                         h('div.tc', timeControlStr(game["b"], game["i"], game["bp"]) + " • " + gameType(game["y"]) + " • " + variant.displayName(chess960)),
-                        h('div', toutnamentInfo(game)),
+                        h('div', tournamentInfo(game)),
                     ]),
                 ]),
                 h('div.info-middle', [
@@ -134,20 +133,23 @@ function renderGames(model: PyChessModel, games: Game[]) {
 }
 
 function loadGames(model: PyChessModel, page: number) {
+    const lang = languageSettings.value;
+    console.log(lang);
+
     const xmlhttp = new XMLHttpRequest();
     let url = "/api/" + model["profileid"]
     if (model.level) {
-        url = url + "/loss?x=8&p=";
+        url = `${url}/loss?l=${lang}&x=8&p=`;
     } else if (model.variant) {
-        url = url + "/perf/" + model.variant + "?p=";
+        url = `${url}/perf/${model.variant}?l=${lang}&p=`;
     } else if (model.rated === "1") {
-        url = url + "/rated" + "?p=";
+        url = `${url}/rated?l=${lang}&p=`;
     } else if (model.rated === "2") {
-        url = url + "/import" + "?p=";
+        url = `${url}/import?l=${lang}&p=`;
     } else if (model["rated"] === "-1") {
-        url = url + "/me" + "?p=";
+        url = `${url}/me?l=${lang}&p=`;
     } else {
-        url = url + "/all?p=";
+        url = `${url}/all?l=${lang}&p=`;
     }
 
     xmlhttp.onreadystatechange = function() {
@@ -164,7 +166,7 @@ function loadGames(model: PyChessModel, page: number) {
             renderTimeago();
         }
     };
-    xmlhttp.open("GET", url + page, true);
+    xmlhttp.open("GET", `${url}${page}`, true);
     xmlhttp.send();
 }
 
