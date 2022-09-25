@@ -49,6 +49,7 @@ class BoardSettings {
         this.settings["showDests"] = new ShowDestsSettings(this);
         this.settings["autoPromote"] = new AutoPromoteSettings(this);
         this.settings["arrow"] = new ArrowSettings(this);
+        this.settings["multipv"] = new MultiPVSettings(this);
         this.settings["blindfold"] = new BlindfoldSettings(this);
         this.settings["materialDifference"] = new MaterialDifferenceSettings(this);
     }
@@ -101,13 +102,6 @@ class BoardSettings {
             const el = document.querySelector('svg image') as HTMLElement;
             // if there is any
             if (el) {
-                const classNames = el.getAttribute('className')!.split(' ');
-                const variant = this.ctrl.variant.name
-                const role = classNames[0] as cg.Role;
-                const color = classNames[1] as cg.Color;
-                const orientation = this.ctrl.flipped() ? this.ctrl.oppcolor : this.ctrl.mycolor;
-                const side = color === orientation ? "ally" : "enemy";
-                chessground.set({ drawable: { pieces: { baseUrl: getPieceImageUrl(variant, role, color, side)! } } });
                 chessground.redrawAll();
             }
         }
@@ -276,7 +270,7 @@ class ZoomSettings extends NumberSettings {
     }
 
     view(): VNode {
-        return slider(this, 'zoom', 0, 100, this.boardFamily.includes("shogi") ? 1 : 1.15625);
+        return h('div', slider(this, 'zoom', 0, 100, this.boardFamily.includes("shogi") ? 1 : 1.15625, _('Zoom')));
     }
 }
 

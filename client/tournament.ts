@@ -9,7 +9,7 @@ import { _ } from './i18n';
 import { patch } from './document';
 import { chatMessage, chatView, IChatController } from './chat';
 //import { sound } from './sound';
-import { VARIANTS, uci2LastMove, Variant } from './chess';
+import { colorIcon, VARIANTS, uci2LastMove, Variant } from './chess';
 import { timeControlStr } from "./view";
 import { initializeClock, localeOptions } from './tournamentClock';
 import { gameType } from './result';
@@ -32,102 +32,7 @@ const SCORE_SHIFT = 100000;
 const SHIELD = 's';
 
 
-interface MsgGetGames {
-    rank: number;
-    name: string;
-    title: string;
-    games: TournamentGame[];
-    perf: number;
-    nbWin: number;
-    nbGames: number;
-    nbBerserk: number;
-}
-
-interface TournamentGame {
-    gameId: string;
-    title: string;
-    name: string;
-    result: string;
-    color: string;
-    rating: number;
-}
-
-interface MsgTournamentStatus {
-    tstatus: number;
-    secondsToFinish: number;
-    nbPlayers: number;
-    sumRating: number;
-    nbGames: number;
-    wWin: number;
-    bWin: number;
-    draw: number;
-    berserk: number;
-}
-
-interface MsgUserConnectedTournament {
-    tsystem: number;
-    tminutes: number;
-    frequency: string;
-    startsAt: string;
-    startFen: cg.FEN;
-
-    username: string;
-    ustatus: string;
-    urating: number;
-    tstatus: number;
-    description: string;
-    defender_name: string;
-    defender_title: string;
-    secondsToStart: number;
-    secondsToFinish: number;
-}
-
-interface MsgGetPlayers {
-    page: number;
-    requestedBy: string;
-    nbPlayers: number;
-    nbGames: number;
-
-    players: TournamentPlayer[];
-    podium?: TournamentPlayer[];
-}
-
-interface TournamentPlayer {
-    name: string;
-    score: number;
-    paused: boolean;
-    title: string;
-    rating: number;
-    points: any[]; // TODO: I am not sure what elements can be in here. most of the time i see 2-element arrays (i think first is the result, second a streak flag or somthing). But i've seen also string '*' as well and there is that chck about isArray that might mean more cases with numeric scalars exist
-    fire: number;
-    perf: number;
-    nbGames: number;
-    nbWin: number;
-    nbBerserk: number;
-}
-
-interface MsgError {
-    message: string;
-}
-interface MsgPing {
-    timestamp: string;
-}
-
-interface TopGame {
-    gameId: string;
-    variant: string;
-    fen: cg.FEN;
-    w: string;
-    b: string;
-    wr: number;
-    br: number;
-    chess960: boolean;
-    base: number;
-    inc: number;
-    byoyomi: number;
-}
-
-export default class TournamentController {
+export class TournamentController implements IChatController {
     sock;
     tournamentId: string;
     readyState: number; // seems unused
@@ -419,17 +324,7 @@ export default class TournamentController {
                 ]),
                 h('td', game.rating),
                 h('td', [
-                    h('i-side.icon', {
-                        class: {
-                            "icon-white": color === "White",
-                            "icon-black": color === "Black",
-                            "icon-red":   color === "Red",
-                            "icon-blue":  color === "Blue",
-                            "icon-gold":  color === "Gold",
-                            "icon-pink":  color === "Pink",
-                            "icon-green": color === "Green",
-                        }
-                    }),
+                    h('i-side.icon', {class: {[colorIcon(this.variant.name, color)]: true}}),
                 ]),
                 this.result(game.result, game.color),
             ]);
@@ -618,7 +513,6 @@ export default class TournamentController {
         }
         return h('div.description', text);
     }
-
 
     renderDefender(name: string, title: string) {
         return h('div.defender', [

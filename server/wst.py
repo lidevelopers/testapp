@@ -201,6 +201,7 @@ async def tournament_socket_handler(request):
                             defender = users[request.app["shield_owners"][variant_name]]
                             response["defender_title"] = defender.title
                             response["defender_name"] = defender.username
+
                         await ws.send_json(response)
 
                         if (tournament.top_game is not None) and (
