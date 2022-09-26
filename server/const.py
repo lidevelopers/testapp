@@ -337,7 +337,7 @@ TRANSLATED_FREQUENCY_NAMES = {
 }
 
 TRANSLATED_VARIANT_NAMES = {
-    "antichess": _("Antihess"),
+    "antichess": _("Antichess"),
     "antichess960": _("Antichess960"),
     "losers": _("Losers"),
     "losers960": _("Losers960"),
