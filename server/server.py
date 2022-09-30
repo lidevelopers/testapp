@@ -64,7 +64,7 @@ from scheduler import (
     create_scheduled_tournaments,
     new_scheduled_tournaments,
     MONTHLY_VARIANTS,
-    SEATURDAY,
+    #SEATURDAY,
     SHIELDS,
 )
 from videos import VIDEOS
@@ -247,12 +247,12 @@ async def init_state(app):
         translation.install()
 
         for variant in VARIANTS:
-            if variant in MONTHLY_VARIANTS or variant in SEATURDAY:
-                tname = translated_tournament_name(variant, MONTHLY, ARENA, translation)
-                app["tourneynames"][lang][(variant, MONTHLY, ARENA)] = tname
-            if variant in SEATURDAY:
-                tname = translated_tournament_name(variant, WEEKLY, ARENA, translation)
-                app["tourneynames"][lang][(variant, WEEKLY, ARENA)] = tname
+            #if variant in MONTHLY_VARIANTS or variant in SEATURDAY:
+             #   tname = translated_tournament_name(variant, MONTHLY, ARENA, translation)
+              #  app["tourneynames"][lang][(variant, MONTHLY, ARENA)] = tname
+            #if variant in SEATURDAY:
+             #   tname = translated_tournament_name(variant, WEEKLY, ARENA, translation)
+              #  app["tourneynames"][lang][(variant, WEEKLY, ARENA)] = tname
             if variant in SHIELDS:
                 tname = translated_tournament_name(variant, SHIELD, ARENA, translation)
                 app["tourneynames"][lang][(variant, SHIELD, ARENA)] = tname

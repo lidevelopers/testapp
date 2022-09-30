@@ -877,29 +877,29 @@ export function lobbyView(model: PyChessModel): VNode[] {
         h('under-lobby', [
             h('posts', [
                 // TODO: create news documents in mongodb and load latest 3 dinamically here
-                h('a.post', { attrs: {href: '/news/shield'} }, [
-                    h('img', { attrs: {src: model["assetURL"] + '/images/shieldwin.png'} }),
+                h('a.post', { attrs: {href: '/news/cmon'} }, [
+                    h('img', { attrs: {src: model["assetURL"] + '/images/cmon.jpg'} }),
                     h('span.text', [
-                        h('strong', "Aleksschtin on Antichess960 Shield Arena streak"),
-                        h('span', 'No opening theory, only pure instinct and chaos'),
+                        h('strong', "Come on we need your support!"),
+                        h('span', 'We need Losers Chess & Losers Chess 960 Players!'),
                     ]),
-                    h('time', '2022.07.15'),
+                    h('time', '2022.09.05'),
                 ]), 
-                h('a.post', { attrs: {href: '/news/summer'} }, [
-                    h('img', { attrs: {src: model["assetURL"] + '/images/summer.png'} }),
+                h('a.post', { attrs: {href: '/news/zakirwins'} }, [
+                    h('img', { attrs: {src: model["assetURL"] + '/images/zakirwins.png'} }),
                     h('span.text', [
-                        h('strong', "Liantichess Summer Marathon Tournament"),
-                        h('span', 'Antichess Marathon #2'),
+                        h('strong', "AGM Zakir Hasanov wins Antichess960 Shield Arena"),
+                        h('span', 'Antichess Grand Master wins Antichess960 Shield Arena for their very first time.'),
                     ]),
-                    h('time', '2022.07.12'),
+                    h('time', '2022.09.05'),
                 ]),                
-                h('a.post', { attrs: {href: '/news/fools'} }, [
-                    h('img', { attrs: {src: model["assetURL"] + '/images/fools.jpg'} }),
+                h('a.post', { attrs: {href: '/news/nmwins'} }, [
+                    h('img', { attrs: {src: model["assetURL"] + '/images/nmwins.png'} }),
                     h('span.text', [
-                        h('strong', "[April Fools] Liantichess's database is running out"),
-                        h('span', 'Liantichess Mongodb database is running out of space, It will delete all your games, and all the user accounts, and it will empty the oceans, silence the birds and shut down the sun.'),
+                        h('strong', "National Master wins Losers Shield Arena (For The First Time Ever)!"),
+                        h('span', 'National Master wins Losers Shield Arena (For The First Time Ever)!'),
                     ]),
-                    h('time', '2022.04.01'),
+                    h('time', '2022.08.17'),
                 ]),
             ]),
         ]),
