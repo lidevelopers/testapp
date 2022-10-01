@@ -9,7 +9,7 @@ export interface Spotlight {
     variant: string;
     chess960: boolean;
     nbPlayers: number;
-    names: {[key: string]: string};
+    name: string;
     startsAt: string;
     tid: string;
 }

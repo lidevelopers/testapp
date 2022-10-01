@@ -259,7 +259,7 @@ async def lobby_socket_handler(request):
                         else:
                             await ws.send_json(response)
 
-                        spotlights = tournament_spotlights(request.app)
+                        spotlights = tournament_spotlights(request.app["tournaments"])
                         if len(spotlights) > 0:
                             await ws.send_json({"type": "spotlights", "items": spotlights})
 
