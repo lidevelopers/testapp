@@ -370,7 +370,7 @@ TRANSLATED_VARIANT_NAMES = {
     # "gothic",
     # "gothhouse",
     # "embassy",
-    "antigrandhouse": _("Antigrandhouse"),
+    "antigrandhouse": _("liantichess"),
     "atomic_giveaway_hill": _("Atomic-Giveaway-Hill"),
     "atomic_giveaway_hill960": _("Atomic-Giveaway-Hill960"),
     "grand": _("Grand"),
