@@ -2,106 +2,106 @@ CUSTOM_TROPHY_OWNERS = {
     # "username": ("variant", "key in TROPHIES")
     # if not for any particular variant put "liantichess".
     "GrohochetGrom": (
-        ("liantichess", "acwc21"),
+        ("antichess", "acwc21"),
     ),
     "SriMethan": (
-        ("liantichess", "developer"),
-        ("liantichess", "moderator"),
+        ("antichess", "developer"),
+        ("antichess", "moderator"),
     ),
     "cFlour": (
-        ("liantichess", "moderator"),
+        ("antichess", "moderator"),
     ),
     "YohaanSethNathan": (
         ("liantichess", "developer"),
     ),
     "Kex09": (
-        ("liantichess", "marathon1"),
-        ("liantichess", "acwc22"),
+        ("antichess", "marathon1"),
+        ("antichess", "acwc22"),
     ),
     "sudenurk2": (
         ("antichess", "wacwc22"),
     ),    
     "ElsaSchneider": (
-        ("liantichess", "marathon5"),
+        ("antichess", "marathon5"),
     ),
     "ChangeOpening": (
-        ("liantichess", "marathon5"),
-        ("liantichess", "moderator"),
+        ("antichess", "marathon5"),
+        ("antichess", "moderator"),
         ("antichess", "acswc22"),
     ),
     "Schizophrenic_Energy": (
-        ("liantichess", "marathon5"),
+        ("antichess", "marathon5"),
     ),
     "JackDanielsHoney": (
-        ("liantichess", "marathon5"),
-        ("liantichess", "marathon5"),
+        ("antichess", "marathon5"),
+        ("antichess", "marathon5"),
     ),
     "Kotov_Syndrome": (
-        ("liantichess", "marathon1"),
-        ("liantichess", "marathon15"),
+        ("antichess", "marathon1"),
+        ("antichess", "marathon15"),
     ),
     "Raicosta": (
-        ("liantichess", "marathon15"),
+        ("antichess", "marathon15"),
     ),
     "Nikhil_Nikhi": (
-        ("liantichess", "marathon15"),
+        ("antichess", "marathon15"),
     ),
     "mental_suicide": (
-        ("liantichess", "marathon15"),
+        ("antichess", "marathon15"),
     ), 
     "STEDgER": (
-        ("liantichess", "marathon15"),
+        ("antichess", "marathon15"),
     ), 
     "icelandically": (
-        ("liantichess", "marathon15"),
+        ("antichess", "marathon15"),
     ), 
     "bogdanyak": (
-        ("liantichess", "marathon15"),
+        ("antichess", "marathon15"),
     ), 
     "usewaxlips": (
-        ("liantichess", "marathon15"),
+        ("antichess", "marathon15"),
     ),
     "passionate_player": (
-        ("liantichess", "marathon15"),
+        ("antichess", "marathon15"),
     ),
     "Antichessdeamon13": (
-        ("liantichess", "marathon15"),
+        ("antichess", "marathon15"),
     ),
      "Plane_380": (
-        ("liantichess", "marathon15"),
+        ("antichess", "marathon15"),
     ),
     "ak1969": (
-        ("liantichess", "marathon15"),
+        ("antichess", "marathon15"),
     ),
     "UglySwede": (
-        ("liantichess", "marathon15"),
+        ("antichess", "marathon15"),
     ),                                       
     "basschess_1989": (
-        ("liantichess", "marathon15"),
+        ("antichess", "marathon15"),
     ),
     "RexIustus": (
-        ("liantichess", "marathon15"),
+        ("antichess", "marathon15"),
     ),
     "aleksschtin": (
-        ("liantichess", "marathon5"),
-        ("liantichess", "marathon15"),
+        ("antichess", "marathon5"),
+        ("antichess", "marathon15"),
     ),
     "kuhar": (
-        ("liantichess", "marathon15"),
+        ("antichess", "marathon15"),
     ),
     "artem_de_puh": (
-        ("liantichess", "marathon5"),
+        ("antichess", "marathon5"),
     ), 
     "Cayden52": (
-        ("liantichess", "marathon5"),
+        ("antichess", "marathon5"),
     ),        
     "nicolas647": (
-        ("liantichess", "marathon15"),
+        ("antichess", "marathon15"),
     ),
     "tolius": (
-        ("liantichess", "marathon15"),
+        ("antichess", "marathon15"),
     ),
     "Nefilibata": (
-        ("liantichess", "marathon15"),
+        ("antichess", "marathon15"),
     ),
 }
