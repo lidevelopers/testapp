@@ -143,8 +143,8 @@ async def index(request):
     lang_translation = request.app["gettext"][lang]
     lang_translation.install()
 
-    #def variant_display_name(variant):
-        #return lang_translation.gettext(TRANSLATED_VARIANT_NAMES[variant])
+    def variant_display_name(variant):
+        return lang_translation.gettext(TRANSLATED_VARIANT_NAMES[variant])
 
     def pairing_system_name(system):
         return lang_translation.gettext(TRANSLATED_PAIRING_SYSTEM_NAMES[system])
@@ -389,7 +389,7 @@ async def index(request):
         "variant": variant if variant is not None else "",
         "fen": fen.replace(".", "+").replace("_", " ") if fen is not None else "",
         "variants": VARIANTS,
-        #"variant_display_name": variant_display_name,
+        "variant_display_name": variant_display_name,
         "tournamentdirector": user.username in TOURNAMENT_DIRECTORS,
     }
 
