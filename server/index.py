@@ -389,7 +389,7 @@ async def index(request):
         "variant": variant if variant is not None else "",
         "fen": fen.replace(".", "+").replace("_", " ") if fen is not None else "",
         "variants": VARIANTS,
-        "variant_display_name": variant_display_name,
+        #"variant_display_name": variant_display_name,
         "tournamentdirector": user.username in TOURNAMENT_DIRECTORS,
     }
 
