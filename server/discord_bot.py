@@ -4,7 +4,7 @@ import os
 import discord
 from discord.ext.commands import Bot
 
-from lobby_broadcast import lobby_broadcast
+#from lobby_broadcast import lobby_broadcast
 
 log = logging.getLogger("discord")
 log.setLevel(logging.INFO)

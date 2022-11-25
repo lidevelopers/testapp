@@ -45,7 +45,7 @@ from index import handle_404
 from routes import get_routes, post_routes
 from settings import (
     DEV,
-    DISCORD_TOKEN,
+    #DISCORD_TOKEN,
     MAX_AGE,
     SECRET_KEY,
     MONGO_HOST,
@@ -64,7 +64,7 @@ from scheduler import (
     MONTHLY_VARIANTS,
     WEEKLY_VARIANTS,
     NO_MORE_VARIANTS,
-    SEATURDAY,
+    #SEATURDAY,
     SHIELDS,
 )
 from videos import VIDEOS
@@ -184,10 +184,10 @@ async def init_state(app):
     app["tv"] = None
 
     # create Discord bot
-    bot = DiscordBot(lobbysockets=app["lobbysockets"], command_prefix="!", intents=intents)
-    app["discord"] = bot
-    async with bot:
-        await bot.start(DISCORD_TOKEN)
+    #bot = DiscordBot(lobbysockets=app["lobbysockets"], command_prefix="!", intents=intents)
+    #app["discord"] = bot
+    #async with bot:
+        #await bot.start(DISCORD_TOKEN)
 
     app["twitch"] = Twitch(app)
     if not DEV:
@@ -252,16 +252,16 @@ async def init_state(app):
 
         translation.install()
 
-        for variant in VARIANTS:
-            if variant in MONTHLY_VARIANTS or variant in SEATURDAY or variant in NO_MORE_VARIANTS:
-                tname = translated_tournament_name(variant, MONTHLY, ARENA, translation)
-                app["tourneynames"][lang][(variant, MONTHLY, ARENA)] = tname
-            if variant in SEATURDAY or variant in WEEKLY_VARIANTS:
-                tname = translated_tournament_name(variant, WEEKLY, ARENA, translation)
-                app["tourneynames"][lang][(variant, WEEKLY, ARENA)] = tname
-            if variant in SHIELDS:
-                tname = translated_tournament_name(variant, SHIELD, ARENA, translation)
-                app["tourneynames"][lang][(variant, SHIELD, ARENA)] = tname
+        #for variant in VARIANTS:
+            #if variant in MONTHLY_VARIANTS or variant in SEATURDAY or variant in NO_MORE_VARIANTS:
+                #tname = translated_tournament_name(variant, MONTHLY, ARENA, translation)
+                #app["tourneynames"][lang][(variant, MONTHLY, ARENA)] = tname
+            #if variant in SEATURDAY or variant in WEEKLY_VARIANTS:
+                #tname = translated_tournament_name(variant, WEEKLY, ARENA, translation)
+                #app["tourneynames"][lang][(variant, WEEKLY, ARENA)] = tname
+            #if variant in SHIELDS:
+               # tname = translated_tournament_name(variant, SHIELD, ARENA, translation)
+               # app["tourneynames"][lang][(variant, SHIELD, ARENA)] = tname
 
     if app["db"] is None:
         return
