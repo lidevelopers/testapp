@@ -7,7 +7,7 @@ from aiohttp import web
 import aiohttp_session
 
 from admin import silence
-from broadcast import lobby_broadcast, discord_message, broadcast_streams
+from broadcast import lobby_broadcast, broadcast_streams
 from chat import chat_response
 from const import STARTED
 from settings import ADMINS, TOURNAMENT_DIRECTORS
@@ -21,6 +21,9 @@ log = logging.getLogger(__name__)
 
 
 async def is_playing(request, user, ws):
+    # Prevent None user to handle seeks
+    if user is None:
+        return True
     # Prevent users to start new games if they have an unfinished one
     if user.game_in_progress is not None:
         game = await load_game(request.app, user.game_in_progress)
@@ -62,7 +65,7 @@ async def lobby_socket_handler(request):
         session.invalidate()
         return web.HTTPFound("/")
 
-    log.debug("-------------------------- NEW lobby WEBSOCKET by %s", user)
+    log.info("--- NEW lobby WEBSOCKET by %s from %s", session_user, request.remote)
 
     try:
         async for msg in ws:
@@ -126,7 +129,9 @@ async def lobby_socket_handler(request):
                         print("create_seek", data)
                         seek = await create_seek(db, invites, seeks, user, data, ws)
                         await lobby_broadcast(sockets, get_seeks(seeks))
-                        await discord_message(request.app, "create_seek", seek.discord_msg)
+                        await request.app["discord"].send_to_discord(
+                            "create_seek", seek.discord_msg
+                        )
 
                     elif data["type"] == "create_invite":
                         no = await is_playing(request, user, ws)
@@ -314,6 +319,10 @@ async def lobby_socket_handler(request):
 
                         if response is not None:
                             await lobby_broadcast(sockets, response)
+
+                        await request.app["discord"].send_to_discord(
+                            "lobbychat", data["message"], user.username
+                        )
 
                     elif data["type"] == "logout":
                         await ws.close()

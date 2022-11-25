@@ -11,7 +11,19 @@ blastOnCapture = true
 castling = false
 extinctionOpponentPieceCount = 1
 
-[antishogun:crazyhouse]
+# Hybrid variant of Embassy chess and crazyhouse, using Embassy as a template
+[embassyhouse:embassy]
+startFen = rnbqkcabnr/pppppppppp/10/10/10/10/PPPPPPPPPP/RNBQKCABNR[] w KQkq - 0 1
+pieceDrops = true
+capturesToHand = true
+
+[gorogoroplus:gorogoro]
+startFen = sgkgs/5/1ppp1/1PPP1/5/SGKGS[LNln] w 0 1
+lance = l
+shogiKnight = n
+promotedPieceType = l:g n:g
+
+[shogun:crazyhouse]
 startFen = rnb+fkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNB+FKBNR[] w KQkq - 0 1
 centaur = g
 archbishop = a

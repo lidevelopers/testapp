@@ -56,28 +56,28 @@ export const BOARD_FAMILIES: { [key: string]: BoardFamily } = {
 };
 
 export const PIECE_FAMILIES: { [key: string]: PieceFamily } = {
-    standard: { pieceCSS: ["standard", "green", "alpha", "chess_kaneo", "santa", "maestro"] },
-    capa: { pieceCSS: ["capa0", "capa1", "capa2", "capa3", "capa4", "capa5"] },
-    seirawan: { pieceCSS: ["seir1", "seir0", "seir2", "seir3", "seir4", "seir5"] },
-    makruk: { pieceCSS: ["makrukwb", "makrukwr", "makruk", "makruks", "makruki"] },
-    sittuyin: { pieceCSS: ["sittuyins", "sittuyinkagr", "sittuyinkabr", "sittuyinm", "sittuyini"] },
-    asean: { pieceCSS: ["aseani", "aseanm", "aseanc", "aseans"] },
-    shogi: { pieceCSS: ["shogik", "shogi", "shogiw", "shogip", "shogim", "shogip3d", "shogikw3d", "shogid", "shogiim", "shogibw", "portk", "porti"] },
-    kyoto: { pieceCSS: ["kyoto", "kyotok", "kyotoks", "kyotoi", "kyotod"] },
-    dobutsu: { pieceCSS: ["dobutsu"] },
-    tori: { pieceCSS: ["torii", "torik", "torim", "porti"] },
-    xiangqi: { pieceCSS: ["xiangqi2d", "xiangqi2di", "xiangqi", "xiangqict3", "xiangqihnz", "xiangqict2", "xiangqihnzw", "xiangqict2w", "xiangqiwikim", "xiangqiKa", "xiangqittxqhnz", "xiangqittxqintl"] },
-    janggi: { pieceCSS: ["janggihb", "janggihg", "janggiikak", "janggiikaw", "janggikak", "janggikaw", "janggiib", "janggiig"] },
-    shako: { pieceCSS: ["shako0", "shako1", "shako2"] },
-    shogun: { pieceCSS: ["shogun0", "shogun1", "shogun2", "shogun3", "shogun4", "shogun5"] },
-    orda: { pieceCSS: ["orda0", "orda1"] },
-    synochess: { pieceCSS: ["synochess0", "synochess1", "synochess2", "synochess3", "synochess4", "synochess5"] },
-    hoppel: { pieceCSS: ["hoppel0", "hoppel1", "hoppel2"] },
-    shinobi: { pieceCSS: ["shinobi0", "shinobi1"] },
-    empire: { pieceCSS: ["empire0", "empire1"] },
-    ordamirror: { pieceCSS: ["ordamirror0", "ordamirror1"] },
-    chak: { pieceCSS: ["chak0"] },
-    chennis: { pieceCSS: ["chennis0", "chennis1", "chennis2"] },
+    standard: { pieceCSS: ["standard", "green", "alpha", "chess_kaneo", "santa", "maestro", "dubrovny", "disguised"] },
+    capa: { pieceCSS: ["capa0", "capa1", "capa2", "capa3", "capa4", "capa5", "disguised"] },
+    seirawan: { pieceCSS: ["seir1", "seir0", "seir2", "seir3", "seir4", "seir5", "disguised"] },
+    makruk: { pieceCSS: ["makrukwb", "makrukwr", "makruk", "makruks", "makruki", "disguised"] },
+    sittuyin: { pieceCSS: ["sittuyins", "sittuyinkagr", "sittuyinkabr", "sittuyinm", "sittuyini", "disguised"] },
+    asean: { pieceCSS: ["aseani", "aseanm", "aseanc", "aseans", "disguised"] },
+    shogi: { pieceCSS: ["shogik", "shogi", "shogiw", "shogip", "shogim", "shogip3d", "shogikw3d", "shogid", "shogiim", "shogibw", "portk", "porti", "disguised"] },
+    kyoto: { pieceCSS: ["kyoto", "kyotok", "kyotoks", "kyotoi", "kyotod", "disguised"] },
+    dobutsu: { pieceCSS: ["dobutsu", "disguised"] },
+    tori: { pieceCSS: ["torii", "torik", "torim", "porti", "disguised"] },
+    xiangqi: { pieceCSS: ["xiangqi2d", "xiangqi2di", "xiangqi", "xiangqict3", "xiangqihnz", "xiangqict2", "xiangqihnzw", "xiangqict2w", "xiangqiwikim", "xiangqiKa", "xiangqittxqhnz", "xiangqittxqintl", "disguised"] },
+    janggi: { pieceCSS: ["janggihb", "janggihg", "janggiikak", "janggiikaw", "janggikak", "janggikaw", "janggiib", "janggiig", "disguised"] },
+    shako: { pieceCSS: ["shako0", "shako1", "shako2", "disguised"] },
+    shogun: { pieceCSS: ["shogun0", "shogun1", "shogun2", "shogun3", "shogun4", "shogun5", "disguised"] },
+    orda: { pieceCSS: ["orda0", "orda1", "disguised"] },
+    synochess: { pieceCSS: ["synochess0", "synochess1", "synochess2", "synochess3", "synochess4", "synochess5", "disguised"] },
+    hoppel: { pieceCSS: ["hoppel0", "hoppel1", "hoppel2", "disguised"] },
+    shinobi: { pieceCSS: ["shinobi0", "shinobi1", "disguised"] },
+    empire: { pieceCSS: ["empire0", "empire1", "disguised"] },
+    ordamirror: { pieceCSS: ["ordamirror0", "ordamirror1", "disguised"] },
+    chak: { pieceCSS: ["chak0", "disguised"] },
+    chennis: { pieceCSS: ["chennis0", "chennis1", "chennis2", "disguised"] },
 };
 
 type MandatoryPromotionPredicate = (role: cg.Role, orig: cg.Orig, dest: cg.Key, color: cg.Color) => boolean;
@@ -802,7 +802,7 @@ export const VARIANTS: { [name: string]: Variant } = {
             'Conservative': 'arnbqkbnrc/pppppppppp/10/10/10/10/PPPPPPPPPP/ARNBQKBNRC w KQkq - 0 1',
             'Embassy': 'rnbqkcabnr/pppppppppp/10/10/10/10/PPPPPPPPPP/RNBQKCABNR w KQkq - 0 1',
             'Gothic': 'rnbqckabnr/pppppppppp/10/10/10/10/PPPPPPPPPP/RNBQCKABNR w KQkq - 0 1',
-            'Schoolbook': 'rqnbakbncr/pppppppppp/10/10/10/10/PPPPPPPPPP/RQNBAKBNCR w KQkq - 0 1'
+            'Schoolbook': 'rqnbakbncr/pppppppppp/10/10/10/10/PPPPPPPPPP/RQNBAKBNCR w KQkq - 0 1',
         },
         chess960: true, icon: "P", icon960: ",",
     }),
@@ -816,10 +816,12 @@ export const VARIANTS: { [name: string]: Variant } = {
         enPassant: true, captureToHand: true,
         alternateStart: {
             '': '',
-            'Bird': 'rnbcqkabnr/pppppppppp/10/10/10/10/PPPPPPPPPP/RNBCQKABNR w KQkq - 0 1',
-            'Carrera': 'rcnbqkbnar/pppppppppp/10/10/10/10/PPPPPPPPPP/RCNBQKBNAR w KQkq - 0 1',
-            'Gothic': 'rnbqckabnr/pppppppppp/10/10/10/10/PPPPPPPPPP/RNBQCKABNR w KQkq - 0 1',
-            'Embassy': 'rnbqkcabnr/pppppppppp/10/10/10/10/PPPPPPPPPP/RNBQKCABNR w KQkq - 0 1'
+            'Bird': 'rnbcqkabnr/pppppppppp/10/10/10/10/PPPPPPPPPP/RNBCQKABNR[] w KQkq - 0 1',
+            'Carrera': 'rcnbqkbnar/pppppppppp/10/10/10/10/PPPPPPPPPP/RCNBQKBNAR[] w KQkq - 0 1',
+            'Conservative': 'arnbqkbnrc/pppppppppp/10/10/10/10/PPPPPPPPPP/ARNBQKBNRC[] w KQkq - 0 1',
+            'Embassy': 'rnbqkcabnr/pppppppppp/10/10/10/10/PPPPPPPPPP/RNBQKCABNR[] w KQkq - 0 1',
+            'Gothic': 'rnbqckabnr/pppppppppp/10/10/10/10/PPPPPPPPPP/RNBQCKABNR[] w KQkq - 0 1',
+            'Schoolbook': 'rqnbakbncr/pppppppppp/10/10/10/10/PPPPPPPPPP/RQNBAKBNCR[] w KQkq - 0 1',
         },
         chess960: true, icon: "&", icon960: "'",
     }),
@@ -999,6 +1001,16 @@ export const VARIANTS: { [name: string]: Variant } = {
         icon: "P",
     }),
 
+    embassyhouse: new Variant({
+        name: "embassyhouse", tooltip: () => _("Embassy with Crazyhouse drop rules."),
+        startFen: "rnbqkcabnr/pppppppppp/10/10/10/10/PPPPPPPPPP/RNBQKCABNR[] w KQkq - 0 1",
+        board: "standard10x8", piece: "capa",
+        pieceLetters: ["k", "q", "c", "a", "r", "b", "n", "p"],
+        pocketLetters: ["p", "n", "b", "r", "a", "c", "q"],
+        enPassant: true, captureToHand: true,
+        icon: "&",
+    }),
+
     gothic: new Variant({
         name: "gothic", tooltip: () => _("Like Capablanca Chess but with a different starting setup."),
         startFen: "rnbqckabnr/pppppppppp/10/10/10/10/PPPPPPPPPP/RNBQCKABNR w KQkq - 0 1",
@@ -1016,12 +1028,12 @@ export const VARIANTS: { [name: string]: Variant } = {
         pieceLetters: ["k", "q", "c", "a", "r", "b", "n", "p"],
         pocketLetters: ["p", "n", "b", "r", "a", "c", "q"],
         enPassant: true, captureToHand: true,
-        icon: "P",
+        icon: "&",
     }),
 };
 
 export const variants = Object.keys(VARIANTS);
-const disabledVariants = [ "gothic", "gothhouse", "embassy", "gorogoro" ];
+const disabledVariants = [ "gothic", "gothhouse", "embassy", "embassyhouse", "gorogoro" ];
 export const enabledVariants = variants.filter(v => !disabledVariants.includes(v));
 
 const variantGroups: { [ key: string ]: { variants: string[] } } = {
@@ -1062,6 +1074,20 @@ export function selectVariant(id: string, selected: string, onChange: EventListe
             }));
         }),
     );
+}
+
+// Some variants need to be treated differently according to the FEN.
+// Refer to server/fairy.py for more information
+export function moddedVariant(variantName: string, chess960: boolean, pieces: cg.Pieces, castling: string): string {
+    if (!chess960 && ["capablanca", "capahouse"].includes(variantName)) {
+        const whiteKing = pieces.get('e1');
+        const blackKing = pieces.get('e8');
+        if (castling !== '-' &&
+            ((!castling.includes('K') && !castling.includes('Q')) || (whiteKing && util.samePiece(whiteKing, { role: 'k-piece', color: 'white' }))) &&
+            ((!castling.includes('k') && !castling.includes('q')) || (blackKing && util.samePiece(blackKing, { role: 'k-piece', color: 'black' }))))
+            return variantName.includes("house") ? "embassyhouse" : "embassy";
+    }
+    return variantName;
 }
 
 const handicapKeywords = [ "HC", "Handicap", "Odds" ];

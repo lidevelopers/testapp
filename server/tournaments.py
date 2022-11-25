@@ -4,7 +4,6 @@ from datetime import datetime, timezone
 
 import aiohttp_session
 
-from broadcast import discord_message
 from compress import C2V, V2C, C2R
 from const import (
     CASUAL,
@@ -46,7 +45,7 @@ async def create_or_update_tournament(app, username, form, tournament=None):
     base = float(form["clockTime"])
     inc = int(form["clockIncrement"])
     bp = int(form["byoyomiPeriod"])
-    frequency = SHIELD if form["shield"] == "true" else ""
+    frequency = SHIELD if form.get("shield", "") == "true" else ""
 
     if form["startDate"]:
         start_date = datetime.fromisoformat(form["startDate"].rstrip("Z")).replace(
@@ -94,7 +93,7 @@ async def create_or_update_tournament(app, username, form, tournament=None):
 
 async def broadcast_tournament_creation(app, tournament):
     await tournament.broadcast_spotlight()
-    await discord_message(app, "create_tournament", tournament.create_discord_msg)
+    await app["discord"].send_to_discord("create_tournament", tournament.create_discord_msg)
 
 
 async def new_tournament(app, data):
@@ -510,8 +509,7 @@ async def load_tournament(app, tournament_id, tournament_klass=None):
 
 def translated_tournament_name(variant, chess960, frequency, system, lang_translation):
     # Weekly makruk category == SEAturday
-    frequency = "S" if variant in CATEGORIES["makruk"] and frequency == "w" else frequency
-    variant_name = variant + ("960" if chess960 else "")
+    frequency = "S" if variant in CATEGORIES["makruk"] and frequency == "m" else frequency
     if frequency == "s":
         return "%s %s %s" % (
             lang_translation.gettext(TRANSLATED_VARIANT_NAMES[variant_name]),
