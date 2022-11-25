@@ -35,6 +35,10 @@ from const import (
     T_STARTED,
     MAX_CHAT_LINES,
     SCHEDULE_MAX_DAYS,
+    ARENA,
+    WEEKLY,
+    MONTHLY,
+    SHIELD,
 )
 from discord_bot import DiscordBot, intents
 from generate_crosstable import generate_crosstable
@@ -45,7 +49,7 @@ from index import handle_404
 from routes import get_routes, post_routes
 from settings import (
     DEV,
-    #DISCORD_TOKEN,
+    DISCORD_TOKEN,
     MAX_AGE,
     SECRET_KEY,
     MONGO_HOST,
@@ -55,7 +59,7 @@ from settings import (
     static_url,
 )
 from user import User
-from tournaments import load_tournament, get_scheduled_tournaments
+from tournaments import load_tournament, get_scheduled_tournaments, translated_tournament_name
 from twitch import Twitch
 from youtube import Youtube
 from scheduler import (
@@ -153,7 +157,7 @@ async def init_state(app):
     # one dict per tournament! {tournamentId: {user.username: user.tournament_sockets, ...}, ...}
     app["tourneysockets"] = {}
 
-    # cache for profile game list page {tournamentId: tournament.name, ...}
+    # translated scheduled tournament names {(variant, frequency, t_type): tournament.name, ...}
     app["tourneynames"] = {lang: {} for lang in LANGUAGES}
 
     app["tournaments"] = {}
@@ -252,16 +256,16 @@ async def init_state(app):
 
         translation.install()
 
-        #for variant in VARIANTS:
+        for variant in VARIANTS:
             #if variant in MONTHLY_VARIANTS or variant in SEATURDAY or variant in NO_MORE_VARIANTS:
                 #tname = translated_tournament_name(variant, MONTHLY, ARENA, translation)
                 #app["tourneynames"][lang][(variant, MONTHLY, ARENA)] = tname
             #if variant in SEATURDAY or variant in WEEKLY_VARIANTS:
                 #tname = translated_tournament_name(variant, WEEKLY, ARENA, translation)
                 #app["tourneynames"][lang][(variant, WEEKLY, ARENA)] = tname
-            #if variant in SHIELDS:
-               # tname = translated_tournament_name(variant, SHIELD, ARENA, translation)
-               # app["tourneynames"][lang][(variant, SHIELD, ARENA)] = tname
+            if variant in SHIELDS:
+                tname = translated_tournament_name(variant, SHIELD, ARENA, translation)
+                app["tourneynames"][lang][(variant, SHIELD, ARENA)] = tname
 
     if app["db"] is None:
         return
@@ -297,11 +301,9 @@ async def init_state(app):
             ):
                 await load_tournament(app, doc["_id"])
 
-        # TODO: Enable on prod pychess when time comes
-        if DEV:
-            already_scheduled = await get_scheduled_tournaments(app)
-            new_tournaments_data = new_scheduled_tournaments(already_scheduled)
-            await create_scheduled_tournaments(app, new_tournaments_data)
+        already_scheduled = await get_scheduled_tournaments(app)
+        new_tournaments_data = new_scheduled_tournaments(already_scheduled)
+        await create_scheduled_tournaments(app, new_tournaments_data)
 
         asyncio.create_task(generate_shield(app))
 
