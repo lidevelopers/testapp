@@ -1,0 +1,146 @@
+# Translations template for PROJECT.
+# Copyright (C) 2022 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# 
+# Translators:
+# Marken Foo <marken.foo.yw@gmail.com>, 2021
+# gbtami <gbtami@gmail.com>, 2022
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-01-11 22:23+0100\n"
+"PO-Revision-Date: 2020-05-04 12:19+0000\n"
+"Last-Translator: gbtami <gbtami@gmail.com>, 2022\n"
+"Language-Team: Japanese (https://www.transifex.com/gbtami/teams/14790/ja/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../templates/closed.html:8
+msgid "This account is closed."
+msgstr "このアカウントは停止されました。"
+
+#: ../templates/patron.html:8
+msgid ""
+"As you know, pychess-variants is a free server and it will remain free forever. However, maintaining and improving the server costs time and money.\n"
+"If you like our work and find our server useful, please donate through patreon or paypal."
+msgstr ""
+
+#: ../templates/players.html:9
+msgid "Online"
+msgstr "接続中"
+
+#: ../templates/players.html:28
+msgid "Anonymous"
+msgstr "匿名"
+
+#: ../templates/players.html:35
+msgid "All players"
+msgstr "プレイヤーの一覧"
+
+#: ../templates/players.html:36 ../templates/winners.html:6
+msgid "Tournament winners"
+msgstr "トーナメント優勝者"
+
+#: ../templates/players.html:37 ../templates/shields.html:6
+msgid "Tournament shields"
+msgstr "シールド戦優勝者"
+
+#: ../templates/profile.html:14
+#, python-format
+msgid "%(count)s game"
+msgid_plural "%(count)s games"
+msgstr[0] "%(count)s 局対局"
+
+#: ../templates/profile.html:42
+msgid "Watch games"
+msgstr "観戦する"
+
+#: ../templates/profile.html:44
+msgid "Challenge to a game"
+msgstr "対戦を申し込む"
+
+#: ../templates/profile.html:47
+msgid "Import game"
+msgstr "対局を導入する"
+
+#: ../templates/profile.html:50
+msgid "Export games"
+msgstr "対局を導出する"
+
+#: ../templates/profile.html:53
+msgid "Lichess profile"
+msgstr "Lichess プロフィール"
+
+#: ../templates/template.html:17
+msgid "Tv"
+msgstr "TV"
+
+#: ../templates/template.html:18
+msgid "Current games"
+msgstr "現在対局中"
+
+#: ../templates/template.html:19 ../templates/tournaments.html:6
+msgid "Tournaments"
+msgstr "トーナメント"
+
+#: ../templates/template.html:20
+msgid "Players"
+msgstr "プレイヤー"
+
+#: ../templates/template.html:21
+msgid "Editor"
+msgstr "盤面入力"
+
+#: ../templates/template.html:22
+msgid "Analysis"
+msgstr "棋譜解析"
+
+#: ../templates/template.html:23
+msgid "Variants"
+msgstr "将棋類"
+
+#: ../templates/template.html:29
+msgid "Login with Lichess"
+msgstr "Lichessアカウントでログイン"
+
+#: ../templates/template.html:29
+msgid "Log in"
+msgstr "ログイン"
+
+#: ../templates/tournaments.html:9
+msgid "CREATE A NEW TOURNAMENT"
+msgstr "新しいトーナメントを作る"
+
+#: ../templates/tournaments.html:18
+msgid "Now playing"
+msgstr "進行中"
+
+#: ../templates/tournaments.html:20
+msgid "Starting soon"
+msgstr "まだ始まっていない"
+
+#: ../templates/tournaments.html:22
+msgid "Finished"
+msgstr "終了した"
+
+#: ../templates/tournaments.html:43
+msgid "Rated"
+msgstr "レート戦"
+
+#: ../templates/tournaments.html:43
+msgid "Casual"
+msgstr "非レート戦"
+
+#: ../templates/tournaments.html:50
+#, python-format
+msgid "%(count)s player"
+msgid_plural "%(count)s players"
+msgstr[0] "現在%(count)s人連続中"

@@ -1,0 +1,150 @@
+# Translations template for PROJECT.
+# Copyright (C) 2022 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# 
+# Translators:
+# Leo Ha <yeoha123@gmail.com>, 2020
+# 이상백 <esangbaek@ajou.ac.kr>, 2020
+# 설월신서향雪月申瑞香, 2021
+# gbtami <gbtami@gmail.com>, 2022
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-01-11 22:23+0100\n"
+"PO-Revision-Date: 2020-05-04 12:19+0000\n"
+"Last-Translator: gbtami <gbtami@gmail.com>, 2022\n"
+"Language-Team: Korean (https://www.transifex.com/gbtami/teams/14790/ko/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+"Language: ko\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../templates/closed.html:8
+msgid "This account is closed."
+msgstr "이 계정은 정지되었습니다"
+
+#: ../templates/patron.html:8
+msgid ""
+"As you know, pychess-variants is a free server and it will remain free forever. However, maintaining and improving the server costs time and money.\n"
+"If you like our work and find our server useful, please donate through patreon or paypal."
+msgstr ""
+"pychess-variants 는 무료 서버이며 앞으로도 계속 무료로 운영됩니다. 하지만 서버 관리 및 향상을 위해서는 돈과 시간이 들어갑니다. \n"
+"만약 저희가 하는 일이 만족스럽고 서버가 상당히 유용하셨다면, patreon 또는 paypal 을 통해 기부 해주셨으면 합니다."
+
+#: ../templates/players.html:9
+msgid "Online"
+msgstr "온라인"
+
+#: ../templates/players.html:28
+msgid "Anonymous"
+msgstr "익명"
+
+#: ../templates/players.html:35
+msgid "All players"
+msgstr "모든 대국자"
+
+#: ../templates/players.html:36 ../templates/winners.html:6
+msgid "Tournament winners"
+msgstr "토너먼트 우승자"
+
+#: ../templates/players.html:37 ../templates/shields.html:6
+msgid "Tournament shields"
+msgstr "토너먼트 쉴드"
+
+#: ../templates/profile.html:14
+#, python-format
+msgid "%(count)s game"
+msgid_plural "%(count)s games"
+msgstr[0] "%(count)s 개의 게임"
+
+#: ../templates/profile.html:42
+msgid "Watch games"
+msgstr "관전"
+
+#: ../templates/profile.html:44
+msgid "Challenge to a game"
+msgstr "대국 신청"
+
+#: ../templates/profile.html:47
+msgid "Import game"
+msgstr ""
+
+#: ../templates/profile.html:50
+msgid "Export games"
+msgstr ""
+
+#: ../templates/profile.html:53
+msgid "Lichess profile"
+msgstr "Lichess 프로필"
+
+#: ../templates/template.html:17
+msgid "Tv"
+msgstr "생중계"
+
+#: ../templates/template.html:18
+msgid "Current games"
+msgstr "현재 진행 중인 게임"
+
+#: ../templates/template.html:19 ../templates/tournaments.html:6
+msgid "Tournaments"
+msgstr "토너먼트"
+
+#: ../templates/template.html:20
+msgid "Players"
+msgstr "대국자"
+
+#: ../templates/template.html:21
+msgid "Editor"
+msgstr "판 편집"
+
+#: ../templates/template.html:22
+msgid "Analysis"
+msgstr "분석하기"
+
+#: ../templates/template.html:23
+msgid "Variants"
+msgstr "변형"
+
+#: ../templates/template.html:29
+msgid "Login with Lichess"
+msgstr "Lichess로 로그인"
+
+#: ../templates/template.html:29
+msgid "Log in"
+msgstr "로그인"
+
+#: ../templates/tournaments.html:9
+msgid "CREATE A NEW TOURNAMENT"
+msgstr "새로운 토너먼트 생성"
+
+#: ../templates/tournaments.html:18
+msgid "Now playing"
+msgstr "지금 대국 중"
+
+#: ../templates/tournaments.html:20
+msgid "Starting soon"
+msgstr "곧 시작"
+
+#: ../templates/tournaments.html:22
+msgid "Finished"
+msgstr "끝남"
+
+#: ../templates/tournaments.html:43
+msgid "Rated"
+msgstr "승강전"
+
+#: ../templates/tournaments.html:43
+msgid "Casual"
+msgstr "친선전"
+
+#: ../templates/tournaments.html:50
+#, python-format
+msgid "%(count)s player"
+msgid_plural "%(count)s players"
+msgstr[0] "%(count)s 명의 플레이어"

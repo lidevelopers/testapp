@@ -1,0 +1,150 @@
+# Translations template for PROJECT.
+# Copyright (C) 2022 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# 
+# Translators:
+# Lichess Chess960 <lichess960training@gmail.com>, 2021
+# gbtami <gbtami@gmail.com>, 2022
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-01-11 22:23+0100\n"
+"PO-Revision-Date: 2020-05-04 12:19+0000\n"
+"Last-Translator: gbtami <gbtami@gmail.com>, 2022\n"
+"Language-Team: Turkish (https://www.transifex.com/gbtami/teams/14790/tr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../templates/closed.html:8
+msgid "This account is closed."
+msgstr "Hesap kapatılmıştır"
+
+#: ../templates/patron.html:8
+msgid ""
+"As you know, pychess-variants is a free server and it will remain free forever. However, maintaining and improving the server costs time and money.\n"
+"If you like our work and find our server useful, please donate through patreon or paypal."
+msgstr ""
+"Bildiğiniz gibi, pychess-varyantları sitesi ücretsiz bir sunucudur ve her zaman ücretsiz olarak kalıcaktır. Ancak sunucunun bakımı, sürdürülmesi ve geliştirilmesi zaman ve maddi açıdan masraf teşkil etmektedir. \n"
+"Eğer sunduğumuz hizmeti beğeniyor ve faydalı buluyorsanız, lütfen patreon veya paypal üzerinden bağışta bulunun. "
+
+#: ../templates/players.html:9
+msgid "Online"
+msgstr "Çevrimiçi"
+
+#: ../templates/players.html:28
+msgid "Anonymous"
+msgstr "Anonim"
+
+#: ../templates/players.html:35
+msgid "All players"
+msgstr "Tüm oyuncular"
+
+#: ../templates/players.html:36 ../templates/winners.html:6
+msgid "Tournament winners"
+msgstr ""
+
+#: ../templates/players.html:37 ../templates/shields.html:6
+msgid "Tournament shields"
+msgstr ""
+
+#: ../templates/profile.html:14
+#, python-format
+msgid "%(count)s game"
+msgid_plural "%(count)s games"
+msgstr[0] "%(count)s oyun"
+msgstr[1] "%(count)s oyunlar"
+
+#: ../templates/profile.html:42
+msgid "Watch games"
+msgstr ""
+
+#: ../templates/profile.html:44
+msgid "Challenge to a game"
+msgstr ""
+
+#: ../templates/profile.html:47
+msgid "Import game"
+msgstr ""
+
+#: ../templates/profile.html:50
+msgid "Export games"
+msgstr ""
+
+#: ../templates/profile.html:53
+msgid "Lichess profile"
+msgstr ""
+
+#: ../templates/template.html:17
+msgid "Tv"
+msgstr "Tv"
+
+#: ../templates/template.html:18
+msgid "Current games"
+msgstr "Şu anda oynanan oyunlar"
+
+#: ../templates/template.html:19 ../templates/tournaments.html:6
+msgid "Tournaments"
+msgstr ""
+
+#: ../templates/template.html:20
+msgid "Players"
+msgstr "Oyuncular"
+
+#: ../templates/template.html:21
+msgid "Editor"
+msgstr "Editör"
+
+#: ../templates/template.html:22
+msgid "Analysis"
+msgstr "Analiz"
+
+#: ../templates/template.html:23
+msgid "Variants"
+msgstr ""
+
+#: ../templates/template.html:29
+msgid "Login with Lichess"
+msgstr "Lichess hesabı ile oturum aç"
+
+#: ../templates/template.html:29
+msgid "Log in"
+msgstr "Oturum aç"
+
+#: ../templates/tournaments.html:9
+msgid "CREATE A NEW TOURNAMENT"
+msgstr ""
+
+#: ../templates/tournaments.html:18
+msgid "Now playing"
+msgstr ""
+
+#: ../templates/tournaments.html:20
+msgid "Starting soon"
+msgstr ""
+
+#: ../templates/tournaments.html:22
+msgid "Finished"
+msgstr ""
+
+#: ../templates/tournaments.html:43
+msgid "Rated"
+msgstr "Puanlı"
+
+#: ../templates/tournaments.html:43
+msgid "Casual"
+msgstr "Puansız"
+
+#: ../templates/tournaments.html:50
+#, python-format
+msgid "%(count)s player"
+msgid_plural "%(count)s players"
+msgstr[0] "%(count)s oyuncu"
+msgstr[1] "%(count)s oyuncu"
