@@ -1039,7 +1039,7 @@ export const enabledVariants = variants.filter(v => !disabledVariants.includes(v
 const variantGroups: { [ key: string ]: { variants: string[] } } = {
     standard: { variants: [ "antichess", "losers", "anti_antichess", "antiatomic", "antihouse", "antipawns", "coffeehouse", "coffeehill", "atomic_giveaway_hill", "coffee_3check", "coffeerace", "antiplacement"] },
     //sea:      { variants: [ "makruk", "makpong", "cambodian", "sittuyin", "asean" ] },
-    //shogi:    { variants: [ "antiminishogi" ] },
+    shogi:    { variants: [ "antiminishogi" ] },
     //xiangqi:  { variants: [ "xiangqi", "manchu", "janggi", "minixiangqi" ] },
     fairy:    { variants:  ["anticapablanca", "antigrandhouse"] },
     army:     { variants: [ "antichak", "antiorda", "antisynochess", "antiempire", "antishinobi"] },
@@ -1049,7 +1049,7 @@ function variantGroupLabel(group: string): string {
     const groups: {[index: string]: string} = {
         standard: _("Chess Variants"),
         //sea: _("Makruk Variants"),
-        //shogi: _("Shogi Variants"),
+        shogi: _("Shogi Variants"),
         //xiangqi: _("Xiangqi Variants"),
         fairy: _("Fairy Piece Variants"),
         army: _("New Army Variants"),
