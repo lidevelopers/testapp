@@ -861,7 +861,7 @@ export function lobbyView(model: PyChessModel): VNode[] {
                 h('div#seeks-wrapper', h('table#seeks', { hook: { insert: vnode => runSeeks(vnode, model) } })),
             ]),
         ]),
-        //h('div#variants-catalog'),
+        h('div#variants-catalog'),
         h('aside.sidebar-second', [ h('div#seekbuttons') ]),
         h('under-left', [
             h('a.reflist', { attrs: { href: 'https://discord.gg/5qvjPQstKS' } }, 'Discord'),
