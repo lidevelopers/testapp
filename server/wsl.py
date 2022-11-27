@@ -40,6 +40,15 @@ async def is_playing(request, user, ws):
 async def lobby_socket_handler(request):
 
     users = request.app["users"]
+
+    session = await aiohttp_session.get_session(request)
+    session_user = session.get("user_name")
+    user = users[session_user] if session_user is not None and session_user in users else None
+
+    if (user is not None) and (not user.enabled):
+        session.invalidate()
+        return web.HTTPFound("/")
+
     sockets = request.app["lobbysockets"]
     seeks = request.app["seeks"]
     db = request.app["db"]
@@ -55,15 +64,6 @@ async def lobby_socket_handler(request):
         return web.HTTPFound("/")
 
     await ws.prepare(request)
-
-    session = await aiohttp_session.get_session(request)
-    session_user = session.get("user_name")
-    user = users[session_user] if session_user is not None and session_user in users else None
-
-    if (user is not None) and (not user.enabled):
-        await ws.close()
-        session.invalidate()
-        return web.HTTPFound("/")
 
     log.info("--- NEW lobby WEBSOCKET by %s from %s", session_user, request.remote)
 
@@ -278,13 +278,16 @@ async def lobby_socket_handler(request):
 
                         message = data["message"]
                         response = None
+                        admin_command = False
 
                         if user.username in ADMINS:
                             if message.startswith("/silence"):
+                                admin_command = True
                                 response = silence(message, lobbychat, users)
                                 # silence message was already added to lobbychat in silence()
 
                             elif message.startswith("/stream"):
+                                admin_command = True
                                 parts = message.split()
                                 if len(parts) >= 3:
                                     if parts[1] == "add":
@@ -299,6 +302,7 @@ async def lobby_socket_handler(request):
                                     await broadcast_streams(request.app)
 
                             elif message == "/state":
+                                admin_command = True
                                 server_state(request.app)
 
                             else:
@@ -320,9 +324,10 @@ async def lobby_socket_handler(request):
                         if response is not None:
                             await lobby_broadcast(sockets, response)
 
-                        await request.app["discord"].send_to_discord(
-                            "lobbychat", data["message"], user.username
-                        )
+                        if user.silence == 0 and not admin_command:
+                            await request.app["discord"].send_to_discord(
+                                "lobbychat", data["message"], user.username
+                            )
 
                     elif data["type"] == "logout":
                         await ws.close()

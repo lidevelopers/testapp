@@ -40,7 +40,7 @@ from const import (
     MONTHLY,
     SHIELD,
 )
-from discord_bot import DiscordBot, intents
+from discord_bot import DiscordBot, FakeDiscordBot, intents
 from generate_crosstable import generate_crosstable
 from generate_highscore import generate_highscore
 from generate_shield import generate_shield
@@ -187,12 +187,6 @@ async def init_state(app):
     # last game played
     app["tv"] = None
 
-    # create Discord bot
-    #bot = DiscordBot(lobbysockets=app["lobbysockets"], command_prefix="!", intents=intents)
-    #app["discord"] = bot
-    #async with bot:
-        #await bot.start(DISCORD_TOKEN)
-
     app["twitch"] = Twitch(app)
     if not DEV:
         asyncio.create_task(app["twitch"].init_subscriptions())
@@ -268,7 +262,13 @@ async def init_state(app):
                 app["tourneynames"][lang][(variant, SHIELD, ARENA)] = tname
 
     if app["db"] is None:
+        app["discord"] = FakeDiscordBot()
         return
+
+    # create Discord bot
+    bot = DiscordBot(lobbysockets=app["lobbysockets"], command_prefix="!", intents=intents)
+    app["discord"] = bot
+    asyncio.create_task(bot.start(DISCORD_TOKEN))
 
     # Read tournaments, users and highscore from db
     try:

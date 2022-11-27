@@ -323,37 +323,37 @@ async def get_tournament_name(request, tournament_id):
     tournaments = request.app["tournaments"]
     name = ""
 
-    if tournament_id in tournaments:
-        tournament = tournaments[tournament_id]
-        if tournament.frequency:
-            name = request.app["tourneynames"][lang][
-                (
-                    tournament.variant + ("960" if tournament.chess960 else ""),
-                    tournament.frequency,
-                    tournament.system,
-                )
-            ]
-        else:
-            name = tournament.name
-    else:
-        db = request.app["db"]
-        doc = await db.tournament.find_one({"_id": tournament_id})
-        if doc is not None:
-            frequency = doc.get("fr", "")
-            if frequency:
-                chess960 = bool(doc.get("z"))
-                name = request.app["tourneynames"][lang][
-                    (
-                        C2V[doc["v"]] + ("960" if chess960 else ""),
-                        frequency,
-                        doc["system"],
-                    )
-                ]
-            else:
-                name = doc["name"]
-        request.app["tourneynames"][lang][tournament_id] = name
+    #if tournament_id in tournaments:
+     #   tournament = tournaments[tournament_id]
+      #  if tournament.frequency:
+       #     name = request.app["tourneynames"][lang][
+        #        (
+         #           tournament.variant + ("960" if tournament.chess960 else ""),
+          #          tournament.frequency,
+           #         tournament.system,
+            #    )
+            #]
+        #else:
+         #   name = tournament.name
+    #else:
+     #   db = request.app["db"]
+      #  doc = await db.tournament.find_one({"_id": tournament_id})
+       # if doc is not None:
+        #    frequency = doc.get("fr", "")
+         #   if frequency:
+          #      chess960 = bool(doc.get("z"))
+           #     name = request.app["tourneynames"][lang][
+            #        (
+             #           C2V[doc["v"]] + ("960" if chess960 else ""),
+              #          frequency,
+               #         doc["system"],
+                #    )
+             #   ]
+            #else:
+              #  name = doc["name"]
+        #request.app["tourneynames"][lang][tournament_id] = name
 
-    return name
+    #return name
 
 
 async def load_tournament(app, tournament_id, tournament_klass=None):
