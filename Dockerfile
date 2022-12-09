@@ -1,6 +1,12 @@
 FROM ubuntu:jammy
 COPY . .
 
+RUN apt-get update \
+    && apt update \
+    && apt-get install -y build-essential ca-certificates curl gnupg locales sudo wget
+    
+ENV TZ=Etc/GMT    
+
 RUN apt-get update && apt-get upgrade -y && apt-get install -y wget unzip python3 python3-pip
 
 # Install nvm, npm, and yarn
