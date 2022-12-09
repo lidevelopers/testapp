@@ -1,4 +1,7 @@
-FROM ubuntu:focal-20220415
+FROM ubuntu:jammy
+COPY . .
+
+RUN apt-get update && apt-get upgrade -y && apt-get install -y wget unzip python3 python3-pip
 
 # Install nvm, npm, and yarn
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash \
@@ -12,4 +15,5 @@ RUN pip3 install -r requirements.txt --user
 RUN yarn install                            
 RUN yarn dev                                
 RUN yarn md                
-RUN python3 server/server.py 
+
+CMD python3 server/server.py 
