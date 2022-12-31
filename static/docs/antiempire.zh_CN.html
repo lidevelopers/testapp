@@ -1,0 +1,91 @@
+<h1 id="antiempire-chesshttpsgithubcomgbtamipychess-variantsblobmasterstaticiconsempiresvg-antiempire-chess"><img src="https://github.com/gbtami/pychess-variants/blob/master/static/icons/empire.svg" alt="AntiEmpire chess" /> AntiEmpire Chess</h1>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/CVariantsGuide/Empire.png" alt="AntiEmpire" /></p>
+<p><strong>Note - This Game with must capture and the goal of the game is to lose all your pieces like antichess.</strong></p>
+<p>AntiEmpire Chess is a chess variant designed in 2020 by Couch Tomato, third in the series of asymmetric games (although available to play on Pychess later than the fourth game due to unique pieces that were not yet available). The mighty AntiEmpire (Gold army) has heard stories of the mighty queen of the Kingdom (Black army) and has proposed a marriage with its Duke. However, the Kingdom refused, leading to an Imperial invasion led by the Kaiser himself! </p>
+<p>The Imperial army is incredibly powerful, with all its pieces stronger than the Royal counterpart as they can all move like queens, but attack like the standard Royal counterparts; the only exception is the counterpart to the Queen, the Duke, which can only attack like a King. For those who have played Orda Chess, this is similar except replace knight movement with Queen movement. </p>
+<p>Another unique feature is the King-Kaiser Faceoff rule, adding more checkmate possibilities (this may be familiar to those who have played Xiangqi or Synochess). </p>
+<p>The game itself is incredibly balanced by engine evaluation (even more than standard chess), with a near 50-50 win ratio for the Kingdom and AntiEmpire.<br />
+ </p>
+<h2 id="general-rules">General Rules</h2>
+<ol>
+<li>Setup is as above.</li>
+<li>The Empire (gold) always moves first.</li>
+<li>As Imperial pawns start on the third rank, they do not have the option to move two spaces or be captured by en passant. Royal pawns retain the ability to move two spaces initially and to be captured via en passant.</li>
+<li>Pawns on either side can only promote to a queen.</li>
+<li><strong>King-Kaiser Faceoff</strong> - The King and Kaiser (the Imperial "king") cannot face each other on any open rank or file without intervening pieces, much like a rook attack. Additionally, the black king cannot castle through a king faceoff.</li>
+<li>An additional method of victory is available: called <strong>campmate</strong>. Campmate is achieved by moving one’s king into the final rank without moving into check.</li>
+<li><strong>Stalemate</strong> - loss for the player who can't move (rather than draw as in chess)</li>
+<li><strong>Repetition</strong> - loss for the player who repeats a board position 3 times. Typically this is done through chasing a king or piece.</li>
+<li>The Empire cannot castle.</li>
+<li>Other rules, including Kingdom moves and <a href="https://en.m.wikipedia.org/wiki/En_passant">en passant</a>, are as in standard international chess.</li>
+</ol>
+<h2 id="imperial-pieces">Imperial Pieces</h2>
+<p>There are five new units unique to the Empire: two Soldiers, two Siege Towers, two Eagles, two Cardinals, and one Duke. All Imperial back-rank pieces move like queens but attack like their Royal counterparts. The exception is the Duke, which also moves like a Queen, but attacks like a King.  The Imperial "king" is called a Kaiser (K) and has a different symbol, but the change is purely aesthetic and thematic: it behaves like an orthodox King. </p>
+<p>In these images, green dots represent movement only, while yellow dots represent both movement and capture.</p>
+<h3 id="soldier-s">Soldier (S)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/CVariantsGuide/EmpireSoldier.png" alt="Soldier" /></p>
+<p>The Soldiers replace the two middle Pawns. Soldiers both move and attack either one space forwards or one space to either side. These act as the bodyguards of the Kaiser; they're strongest when paired together. As Soldiers are not Pawns, they <em>don't</em> promote.</p>
+<h3 id="duke-d">Duke (D)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/CVariantsGuide/Duke.png" alt="Duke" /></p>
+<p>The Duke is the counterpart to the Queen. It moves like a Queen, but attacks like a King only. This does not make it a weak piece. In the endgame, it is very capable of checkmating the King with help from any other piece, including the Kaiser itself (because of the King-Kaiser Faceoff rule).</p>
+<h3 id="siege-tower-t">Siege Tower (T)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/CVariantsGuide/Tower.png" alt="Siege Tower" /></p>
+<p>The Siege Tower, or Tower for short, moves like a Queen, but attacks like a Rook only. Effectively, this also means that it is a Rook that can also peacefully move like a Bishop. This is the Empire's strongest piece.</p>
+<h3 id="eagle-e">Eagle (E)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/CVariantsGuide/Eagle.png" alt="Eagle" /></p>
+<p>The Eagle moves like a Queen, but attacks like a Knight only. The value of an Eagle is very similar to that of a Knight and is consequently the weakest piece in the Empire (outside of Pawns and Soldiers).</p>
+<h3 id="cardinal-c">Cardinal (C)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/CVariantsGuide/Cardinal.png" alt="Cardinal" /></p>
+<p>The Cardinal moves like a Queen, but attacks like a Bishop only. Effectively, this also means that it is a Bishop that can also peacefully move like a Rook. As this is not colorbound like the Bishop, this is not much weaker than the Siege Tower and is consequently the second strongest piece in the Empire. </p>
+<h2 id="piece-valuation">Piece valuation</h2>
+<p>Accurate piece values are unknown. However, these are the values used by the version of Fairy Stockfish used to balance the game.</p>
+<table>
+<thead>
+<tr>
+<th id="royal_piece">Royal piece</th>
+<th id="value_(early_/_late)">Value (Early / Late)</th>
+<th id="imperial_piece">Imperial piece</th>
+<th id="value_(early_/_late)">Value (Early / Late)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pawn</td>
+<td>120 / 213</td>
+<td>Pawn</td>
+<td>120 / 213</td>
+</tr>
+<tr>
+<td>Queen</td>
+<td>2538 / 2682</td>
+<td>Duke</td>
+<td>1050 / 1150</td>
+</tr>
+<tr>
+<td>Bishop</td>
+<td>825 / 915</td>
+<td>Cardinal</td>
+<td>1225 / 1420</td>
+</tr>
+<tr>
+<td>Knight</td>
+<td>781 / 854</td>
+<td>Eagle</td>
+<td>1000 / 1075</td>
+</tr>
+<tr>
+<td>Rook</td>
+<td>1276 / 1380</td>
+<td>Tower</td>
+<td>1375 / 1480</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Soldier</td>
+<td>200 / 270</td>
+</tr>
+</tbody>
+</table>
+<h2 id="strategy">Strategy</h2>
+<p>The game is still young, so strategy is still being developed! </p>

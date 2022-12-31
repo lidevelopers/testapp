@@ -508,6 +508,7 @@ export const VARIANTS: { [name: string]: Variant } = {
         chess960: true, icon: "♔", icon960: "♔",
     }),
 
+<<<<<<< HEAD
     antishogi: new Variant({
         name: "antishogi", tooltip: () => _("Japanese Chess, and the standard 9x9 version played today with drops and promotions. "),
         startFen: "lnsgkgsnl/1r5b1/ppppppppp/9/9/9/PPPPPPPPP/1B5R1/LNSGKGSNL[-] w 0 1",
@@ -535,6 +536,27 @@ export const VARIANTS: { [name: string]: Variant } = {
             '10-Piece HC': '4k4/9/ppppppppp/9/9/9/PPPPPPPPP/1B5R1/LNSGKGSNL[-] b 0 1'
         },
         icon: "♔",
+=======
+    duck: new Variant({
+        name: "duck", tooltip: () => _("The duck must be moved to a new square after every turn."),
+        startFen: "rnbqkbnr/pppppppp/8/4*3/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        board: "standard8x8", piece: "standard",
+        pieceLetters: ["k", "q", "r", "b", "n", "p", "*"],
+        pieceLetters2: ["k", "q", "r", "b", "n", "p"],
+        enPassant: true, duck: true,
+        icon: "🦆",
+    }),
+
+    makruk: new Variant({
+        name: "makruk", tooltip: () => _("Thai Chess. A game closely resembling the original Chaturanga. Similar to Chess but with a different queen and bishop."),
+        startFen: "rnsmksnr/8/pppppppp/8/8/PPPPPPPP/8/RNSKMSNR w - - 0 1",
+        board: "makruk8x8", piece: "makruk",
+        pieceLetters: ["k", "s", "m", "n", "r", "p", "m~" as cg.Letter],
+        promotionOrder: ["m"],
+        counting: "makruk",
+        showPromoted: true,
+        icon: "Q",
+>>>>>>> fe6702db28c00ed0ef482e461ce11792c741d575
     }),
 
     coffeehouse: new Variant({
@@ -1041,12 +1063,21 @@ const disabledVariants = [ "gothic", "gothhouse", "embassy", "embassyhouse", "go
 export const enabledVariants = variants.filter(v => !disabledVariants.includes(v));
 
 const variantGroups: { [ key: string ]: { variants: string[] } } = {
+<<<<<<< HEAD
     standard: { variants: [ "antichess", "losers", "anti_antichess", "antiatomic", "antihouse", "antipawns", "coffeehouse", "coffeehill", "atomic_giveaway_hill", "coffee_3check", "coffeerace", "antiplacement"] },
     //sea:      { variants: [ "makruk", "makpong", "cambodian", "sittuyin", "asean" ] },
     shogi:    { variants: [ "antiminishogi" ] },
     //xiangqi:  { variants: [ "xiangqi", "manchu", "janggi", "minixiangqi" ] },
     fairy:    { variants:  ["anticapablanca", "antigrandhouse"] },
     army:     { variants: [ "antichak", "antiorda", "antisynochess", "antiempire", "antishinobi"] },
+=======
+    standard: { variants: [ "chess", "crazyhouse", "placement", "atomic", "duck" ] },
+    sea:      { variants: [ "makruk", "makpong", "cambodian", "sittuyin", "asean" ] },
+    shogi:    { variants: [ "shogi", "minishogi", "kyotoshogi", "dobutsu", "gorogoroplus", "torishogi" ] },
+    xiangqi:  { variants: [ "xiangqi", "manchu", "janggi", "minixiangqi" ] },
+    fairy:    { variants: [ "capablanca", "capahouse", "seirawan", "shouse", "grand", "grandhouse", "shako", "shogun", "hoppelpoppel" ] },
+    army:     { variants: [ "orda", "synochess", "shinobi", "empire", "ordamirror", "chak", "chennis" ] },
+>>>>>>> fe6702db28c00ed0ef482e461ce11792c741d575
 };
 
 function variantGroupLabel(group: string): string {

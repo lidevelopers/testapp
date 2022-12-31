@@ -58,7 +58,13 @@ V2C = {
     "antikoth": "O",
     "torishogi": "T",
     "asean": "S",
+<<<<<<< HEAD
     "antiorda": "C",
+=======
+    "chak": "C",
+    "chennis": "H",
+    "duck": "U",
+>>>>>>> fe6702db28c00ed0ef482e461ce11792c741d575
 }
 C2V = {v: k for k, v in V2C.items()}
 

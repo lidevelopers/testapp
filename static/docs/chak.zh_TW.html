@@ -1,0 +1,121 @@
+<h1 id="chakhttpsgithubcomgbtamipychess-variantsblobmasterstaticiconschaksvg-馬雅象棋--chak"><img src="https://github.com/gbtami/pychess-variants/blob/master/static/icons/Chak.svg" alt="Chak" /> 馬雅象棋 | Chak</h1>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/Chak.png" alt="Chak" /></p>
+<h2 id="背景">背景</h2>
+<p>國際象棋遊戲最早起源於印度，爾後演變為波斯象棋，傳播到歐洲並發展出現代的形式。東亞也有豐富的象棋變體，融合了各地的傳統文化。世界各地的許多文化都有自己的象棋，然而，美洲原住民呢？ 中美洲曾經擁有偉大的帝國。如果他們也有自己的國際象棋呢？</p>
+<p>馬雅象棋 Chak 是Couch Tomato 於 2021 年設計的遊戲，設計理念是使用象棋常見的元素：國王、車、騎士和兵，並引入中美洲的馬雅文化。例如，對於馬雅和其他中美洲文化來說，社會的組成圍繞著祭祀儀式；因此，神靈祭祀和神殿成了遊戲的關鍵精神。</p>
+<p>Chak 這個詞來自馬雅神祇中雨神 Chaac，它掌管雨水、雷電與戰爭。剛好此遊戲的戰場是設在河邊。而馬雅語中相似的兩個詞「Chuc-ah」(俘虜) 和「Ch’ak」(斬首)剛好成為了 Chak 中的 「登壇」和「將死」。</p>
+<h2 id="基本規則">基本規則</h2>
+<p>分為白綠兩方，白方先行。</p>
+<h3 id="棋盤">棋盤</h3>
+<p>馬雅象棋的棋盤為 9x9 :</p>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/ChakBoard.png" alt="Chak" /></p>
+<p>其中有三個特殊的區域:</p>
+<p>-<strong>河界</strong>, 兩方的界限，王和兵過河後可升變，然而，<strong>王與兵過河後不能再回去己方陣地</strong>，只能待再對方一側。</p>
+<p>-<strong>神殿</strong>, 一個象徵性的 3x3 位置，中心為<strong>祭壇</strong>，並無特殊功能。然而從戰略上講，神殿非常重要，因為有許多將死與登壇的戰術都在神殿發生。</p>
+<p>-<strong>祭壇</strong>, 神殿的中心，將己方國王動至對方祭壇即獲勝。</p>
+<h3 id="勝負條件">勝負條件</h3>
+<p>有三種勝利條件:</p>
+<p><strong>將死</strong> - 對方無法防止將軍。</p>
+<p><strong>困斃</strong> - 讓對方的王無處可動。</p>
+<p><strong>登壇</strong> - 將己方王動到對方祭壇，且不能被將軍。</p>
+<p>以下情形為和棋:</p>
+<p><strong>重復動子</strong> - 同一個局面連續重復三次。</p>
+<p><strong>50步無吃子</strong> - 如果五十步都沒有棋子被吃則和棋。</p>
+<h2 id="棋子">棋子</h2>
+<h3 id="國王-k">國王 (K)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/ChakKing.png" alt="King" /></p>
+<p>國王 (<em>Ajaw</em>, 讀作 「Dachau」) 走法就如就如西洋棋的國王，朝八方走一格。</p>
+<p>國王過河後可升變為「神王」</p>
+<h3 id="神王-d">神王 (D)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/DivineKing.png" alt="Divine King" /></p>
+<p>神王可向任何方向移動最多<em>兩個</em>方格，也可以通過被對方棋子威脅的方格（換句話說，它不像西棋的王車易位，王的路徑上不能有棋子攻擊）。 請記住，國王一互升變，便不能退到河界後！由於其攻擊範圍，神王可以直接將未變的國王將死。</p>
+<p>請注意，神王的符號「D」是為了與國王「K」區別。</p>
+<h3 id="美洲豹-j">美洲豹 (J)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/Jaguar.png" alt="Jaguar" /></p>
+<p>美洲豹的移動融合西洋棋的騎士和國王，即 </p>
+<ol>
+<li>先朝一個方向走兩格，再垂直走一格，就如L型。</li>
+</ol>
+<p>或者:</p>
+<ol start="2">
+<li>朝八方移動一步。 </li>
+</ol>
+<p>這種走法在其他變體中常被稱為「半人馬」，與幕府將棋中的將軍和可汗西征棋中的禁衛相同。</p>
+<p>由於能同時打擊多個方位，美洲豹是馬雅象棋中最強的棋子。</p>
+<h3 id="羽神q">羽神(Q)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/QuetzalRange.png" alt="Quetzal range" /></p>
+<p>羽神的走法很特別，它類似於國際象棋皇后，因為它可以在任何方向（垂直或對角）移動任意格…… <em>但是</em>，它需要先跳過中間的棋子。對於熟悉韓國將棋的人來說，這與韓國將棋的「包」類似，但增加了對角線移動，且沒有「不能跳過對方的羽神」的限制。</p>
+<p>羽神是第二強的棋子，但就如象棋的炮，在殘局會因為沒有炮架而失去價值。</p>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/QuetzalLegal.png" alt="Quetzal example" /></p>
+<p><em>範例</em>: 上圖中，羽神可以移動到以上格子(紅色代表吃子)。</p>
+<h3 id="祭司-s">祭司 (S)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/Shaman.png" alt="Shaman" /></p>
+<p>祭司朝前方及後方三格移動一步。</p>
+<p>由於步伐小，它是最弱的子之一，通常用來防守。</p>
+<p>該棋子的形狀是用來提示它的走法。</p>
+<h3 id="禿鷹-v">禿鷹 (V)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/Vulture.png" alt="Vulture" /></p>
+<p>禿鷹的走法就如中國象棋的馬，只是沒有拐馬腳的規則(或如西洋棋的騎士)，先朝一個方向走兩格，再垂直走一格，就如L型。</p>
+<h3 id="蚺蛇-r">蚺蛇 (R)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/Serpent.png" alt="Serpent" /></p>
+<p>蚺蛇就如中國象棋的車，可朝一個方向任意直行。</p>
+<p>它是第三強的子，僅次於美洲豹和羽神。</p>
+<h3 id="兵-p">兵 (P)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/ChakPawn.png" alt="Pawn" /></p>
+<p>兵的移動與攻擊是分開的。走法就如中國象棋的過河卒，吃子的方式卻如西棋的兵。</p>
+<p>兵過河後升變為「士」。</p>
+<h3 id="士-w">士 (W)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/ChakWarrior.png" alt="Warrior" /></p>
+<p>士的走法就如祭司，朝前方與後方三格動一步。與祭司不同的是，士不能退回河界後。</p>
+<h3 id="祭品-o">祭品 (O)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/Offering.png" alt="Offering" /></p>
+<p>祭品不能移動或吃子，它一直待在在祭壇中心。設計上不只是為了主題（玩家獻上祭品），還可作為羽神的炮架。最後，如果你自己的國王在神殿內，它還有助於擋住神王的攻擊，如果此時沒有其他棋子則會強迫和棋。如果祭品在先前己被吃了，神王就有辦法登壇。</p>
+<h2 id="子力價值">子力價值</h2>
+<p>詳細價值尚未知，但以下大小關係是己知的: 美洲豹 &gt; 羽神 &gt; 蚺蛇 &gt; 禿鷹 &gt; 祭司 &gt; 士 &gt; 兵</p>
+<h2 id="策略---棋子基本動法">策略 - 棋子基本動法</h2>
+<p><strong>羽神</strong>: 始終注意羽神的路線。在遊戲開始時，任何移動到羽神前面的棋子都會作為炮架攻擊對方的美洲虎，這是一個稍微有利的交換。</p>
+<p><strong>美洲豹</strong>: 建立防禦並防止美洲豹過河。如果美洲豹在你的棋子生根之前就發攻擊，將可以輕鬆地捉雙。</p>
+<p><strong>兵</strong>: 兵非常靈活和強大，並且很早就可升變。正因如此，它不像其他棋種的兵那樣可任意棄子；如果您願意棄兵，請確保獲得更好局勢，因為在遊戲結束時一個兵的差距可能會左右勝敗。</p>
+<p><strong>神殿</strong>: 神殿非常重要，因為對方的神王只要到達神殿就贏棋。</p>
+<h2 id="策略---殘局">策略 - 殘局</h2>
+<p>殘局通常在搶先登上祭壇。在本節中，我們將關注以神王為唯一攻擊棋子的殘局。</p>
+<h3 id="王-vs-王">王 v.s 王</h3>
+<p>若對方國王是唯一的防守者，攻擊者只需要迫使對方王移出神殿，便可以輕鬆登壇:</p>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/KvsKzugzwang.png" alt="KvsKzugzwang" /></p>
+<p>當祭品還在的時候，攻擊者仍然可以獲勝，但更加棘手。 攻擊者應該做的不是登壇，而是以下這種困斃：</p>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/KvsKStalemate.png" alt="KvsKStalemate" /></p>
+<p>以下是走出這種困斃的棋譜:</p>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/KvsKO.png" alt="KvsKO" /></p>
+<ol>
+<li><p>Dd6+ </p></li>
+<li><p>Kf7 Dd7+ </p></li>
+<li><p>Kf2 De8</p></li>
+<li><p>Kf9 Df7+</p></li>
+<li><p>Ke9 De7!</p></li>
+</ol>
+<p>如此形成以下局面:</p>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/KvsKOzugzwang.png" alt="KvsKOzugzwang" /></p>
+<p>此時綠方被迫移動，白方即可走出困斃。</p>
+<p>然而。 如果防守方多出一子（不動的羽神除外），情況就會發生巨大變化，如下:</p>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/KvsKdraw.png" alt="KvsKdraw" /></p>
+<p>不管祭品是否還在，神王都沒有辦法將死守方的王。唯一需要擔心的是下錯棋，讓自己多出來的一子被神王吃掉。因此建議將其保留在最後4列內，因為神王永遠無法到達那裡，如此雙方便和棋。</p>
+<h3 id="堡壘">堡壘</h3>
+<p>堡壘是指有子防守著祭壇，如此對方便無計可施: </p>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/Fortresses.png" alt="Fortresses" /></p>
+<p>以上這些範例都意謂著，若一方將棋子移開防守，將卸掉堡壘，若雙方都如此則導致和局。另一方面，若一方的堡壘有根而一方沒有，該子通常可以過河並攻擊對方的堡壘，通常多子的一方會獲勝。</p>
+<h3 id="其他防禦">其他防禦</h3>
+<h4 id="美洲豹">美洲豹</h4>
+<p>美幻豹對神王會因重複局面而和棋</p>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/JaguarPerpetual.png" alt="JaguarPerpetual" /></p>
+<p>…除非對方可以直接棄子登壇。</p>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/JaguarPerpetual2.png" alt="JaguarPerpetual2" /></p>
+<p>然而當祭品還在時，又是兩碼子事:</p>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/JaguarvsKO.png" alt="JaguarvsKO" /></p>
+<p>綠可走 1. Jf9; 白方唯一可以繼續攻擊美洲豹的走法為 Df7, 但當 2. Je9+ Dg 而 3. Jd9, 則將失去對美洲豹的威脅。而若白方花二步來攻擊美洲豹， 綠方可以在河的另一頭作更有義意的事。 若白把王動到f9, 則 Jd8 後，同樣也會失去對美洲豹的威脅。所以最好是把王動到 d7 來迫使美洲豹移動。最好記得以走法來形成和棋。</p>
+<h4 id="蚺蛇">蚺蛇</h4>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/SerpentFortress.png" alt="SerpentFortress" /></p>
+<p>蚺蛇可以封住整條路線，如此神王便無法登壇。</p>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/SerpentFortressTrap.png" alt="SerpentFortressTrap" /></p>
+<p>而且，若神王從劃記的格子離開去騷擾蚺蛇，可能會付出代價，例如:</p>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/SerpentFortressTrap2.png" alt="SerpentFortressTrap2" /></p>
+<p>綠方棄蚺蛇攻擊白祭司，同時又守住綠祭壇。此時白祭司無論吃掉蚺蛇與否都無法阻止綠方登壇。</p>

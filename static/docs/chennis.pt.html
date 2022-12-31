@@ -1,0 +1,48 @@
+<h1 id="chennishttpsgithubcomgbtamipychess-variantsblobmasterstaticiconschennissvg-chennis"><img src="https://github.com/gbtami/pychess-variants/blob/master/static/icons/Chennis.svg" alt="Chennis" /> Chennis</h1>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChennisGuide/Chennis.png" alt="Chennis" /></p>
+<h2 id="background">Background</h2>
+<p>Chennis is a game designed by Couch Tomato in 2021 primarily designed as a variant of Kyoto Shogi. Since Kyoto Shogi is a solved game, the goal was to create a more balanced game as well as something more accessible to international chess players. To use less shogi-like pieces, more long-range pieces were needed and thus a larger board. And to keep the king easy enough to mate, restrictions were created. These restrictions coincidentally resulted in a tennis court-shaped board, and hence Chennis was born! Due to the use of cannons and restricted king areas, the game can also be said to feature elements of Xiangqi, making it a game that combines multiple historical chess variants. In terms of balance, the game is approximately 60-40, in favor of white, which achieves what it sets out to do from the initial design.</p>
+<h2 id="introduction-and-general-rules">Introduction and General Rules</h2>
+<p>There are two sides, designated white and black, respectively. White moves first. Each piece (other than the king) has <em>two sides</em>; after each move, the piece changes to its counterpart piece (typically marked as red on the white pieces and marked as blue on the black pieces).</p>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChennisGuide/Swap.png" alt="Piece Swaps" /></p>
+<p>When you capture a piece, it goes into your hand. On a future turn, you can drop that piece onto the board on any open square <em>as either side of the piece</em>. For example, for the Rook-Pawn combo, you can drop it as a rook or as a pawn.</p>
+<h3 id="board">Board</h3>
+<p>Chennis is played on a 7x7 board as seen below:</p>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChennisGuide/ChennisCourt.png" alt="Chak" /></p>
+<p>Pieces that are not the king can move anywhere on the board. There are four types of regions, which determine where the kings can move:</p>
+<p><strong>White's Court</strong>: Only the white king can move in this region.</p>
+<p><strong>Black's Court</strong>: Only the black king can move in this region.</p>
+<p><strong>Net</strong>, a 5 square region in the middle that actually belongs to both courts, so both kings can move in this region.</p>
+<p><strong>Sidelines</strong>, the edges files; <em>neither</em> king can move in these areas.</p>
+<h3 id="goals-of-the-game">Goals of the Game</h3>
+<p>There are three ways to win:</p>
+<p><strong>Checkmate</strong> - Put the king in check with no legal moves.</p>
+<p><strong>Stalemate</strong> - A player with no legal moves loses (unlike in Chess, where it is a draw). </p>
+<p><strong>Resignation</strong> - Your opponent resigns.</p>
+<h2 id="pieces">Pieces</h2>
+<p>The King (K) is the same as in any form of chess and can move on square in any direction as long as it's within the the legal area (see above). Keep in mind that a king can mate another king that's at the net.</p>
+<p>There are four piece pairs:</p>
+<p>Rook-Pawn</p>
+<p>Bishop-Soldier</p>
+<p>Knight-Mayor</p>
+<p>Cannon-Ferz</p>
+<p>The rook, pawn, knight, and bishop move exactly as in chess. If you are not familiar with these pieces, please check out of a chess guide. The only exception is that the pawn does not have the two step move as in chess.</p>
+<p>In general, each pair has opposite movement: Diagonally-attacking pieces turn into orthogonally-attacking pieces and vice-versa.</p>
+<h3 id="soldier-s">Soldier (S)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChennisGuide/Soldier.png" alt="Soldier" /></p>
+<p>The Soldier moves one space forwards or one space sideways. It turns into a Bishop after moving.</p>
+<h3 id="mayor-m">Mayor (M)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChennisGuide/Mayor.png" alt="Mayor" /></p>
+<p>The Mayor moves exactly like the king (one space in any direction). It turns into a Knight after moving.</p>
+<h3 id="ferz-f">Ferz (F)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChennisGuide/Ferz.png" alt="Ferz" /></p>
+<p>The Ferz moves exactly one space diagonally. It turns into a Cannon after moving.</p>
+<h3 id="cannon-c">Cannon (C)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChennisGuide/CannonMove.png" alt="Cannon Move" /></p>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChennisGuide/CannonAttack.png" alt="Cannon Attack" /></p>
+<p>The Cannon moves like a rook (any number of squares orthogonally), but to capture, it needs to hop over an intervening piece. This is the same as the cannon in Xiangqi. It turns into a Ferz after moving.</p>
+<h2 id="piece-valuation">Piece valuation</h2>
+<p>Accurate piece values are unknown. In general, for dropping games such as Chennis, the situation is more important than strict piece evaluation. However, the Knight-Mayor is generally considered the best piece combo because both sides are flexible.</p>
+<h2 id="strategy">Strategy</h2>
+<p>Strategy is still being developed as the game is quite new.</p>
+<p>For beginners, I can't stress enough to remember where the king can move. That means pieces can be dropped on the sideline and threaten the king without retaliation from the king.</p>

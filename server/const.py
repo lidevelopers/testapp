@@ -80,6 +80,7 @@ GRANDS = ("xiangqi", "manchu", "grand", "grandhouse", "shako", "janggi")
 CONSERVATIVE_CAPA_FEN = "arnbqkbnrc/pppppppppp/10/10/10/10/PPPPPPPPPP/ARNBQKBNRC w KQkq - 0 1"
 
 VARIANTS = (
+<<<<<<< HEAD
     "antichess",
     "antichess960",
     "losers",
@@ -110,6 +111,37 @@ VARIANTS = (
     "antigrandhouse",
     "atomic_giveaway_hill",
     "atomic_giveaway_hill960",
+=======
+    "chess",
+    "chess960",
+    "crazyhouse",
+    "crazyhouse960",
+    "placement",
+    "atomic",
+    "atomic960",
+    "duck",
+    "makruk",
+    "makpong",
+    "cambodian",
+    "sittuyin",
+    "asean",
+    "shogi",
+    "minishogi",
+    "kyotoshogi",
+    "dobutsu",
+    # Gorogoro is superseded by Gorogoro Plus
+    # "gorogoro",
+    "gorogoroplus",
+    "torishogi",
+    "xiangqi",
+    "manchu",
+    "janggi",
+    "minixiangqi",
+    "capablanca",
+    "capablanca960",
+    "capahouse",
+    "capahouse960",
+>>>>>>> fe6702db28c00ed0ef482e461ce11792c741d575
     # We support to import/store/analyze these variants
     # but don't support to add them to leaderboard page
 )
@@ -228,9 +260,37 @@ VARIANT_960_TO_PGN = {
 }
 
 CATEGORIES = {
+<<<<<<< HEAD
     "chess": ("chess", "chess960", "crazyhouse", "crazyhouse960", "placement", "atomic", "atomic960", "antichess", "antichess960", "antiatomic", "antiatomic", "coffeehouse", "coffeehouse960", "antihoppelpoppel", "anticapablanca", "antichak", "antigrandhouse"),
     "fairy": ("anticapablanca", "anticapablanca960", "capahouse", "capahouse960", "seirawan", "seirawan960", "shouse", "grand", "grandhouse", "shako", "shogun", "hoppelpoppel"),
     "army": ("synochess", "shinobi", "empire", "chak"),
+=======
+    "chess": (
+        "chess",
+        "chess960",
+        "crazyhouse",
+        "crazyhouse960",
+        "placement",
+        "atomic",
+        "atomic960",
+        "duck",
+    ),
+    "fairy": (
+        "capablanca",
+        "capablanca960",
+        "capahouse",
+        "capahouse960",
+        "seirawan",
+        "seirawan960",
+        "shouse",
+        "grand",
+        "grandhouse",
+        "shako",
+        "shogun",
+        "hoppelpoppel",
+    ),
+    "army": ("orda", "synochess", "shinobi", "empire", "ordamirror", "chak", "chennis"),
+>>>>>>> fe6702db28c00ed0ef482e461ce11792c741d575
     "makruk": ("makruk", "makpong", "cambodian", "sittuyin", "asean"),
     "shogi": ("shogi", "minishogi", "kyotoshogi", "dobutsu", "gorogoro", "torishogi", "antishogi", "antiminishogi"),
     "xiangqi": ("xiangqi", "manchu", "janggi", "minixiangqi"),
@@ -341,6 +401,7 @@ TRANSLATED_FREQUENCY_NAMES = {
 }
 
 TRANSLATED_VARIANT_NAMES = {
+<<<<<<< HEAD
     "antichess": _("Antichess"),
     "antichess960": _("Antichess960"),
     "losers": _("Losers"),
@@ -357,6 +418,25 @@ TRANSLATED_VARIANT_NAMES = {
     "coffeerace": _("Coffeerace"),
     "coffeehouse": _("Coffeehouse"),
     "coffeehouse960": _("Coffeehouse960"),
+=======
+    "chess": _("Chess"),
+    "chess960": _("Chess960"),
+    "crazyhouse": _("Crazyhouse"),
+    "crazyhouse960": _("Crazyhouse960"),
+    "placement": _("Placement"),
+    "atomic": _("Atomic"),
+    "atomic960": _("Atomic960"),
+    "duck": _("Duck Chess"),
+    "makruk": _("Makruk"),
+    "makpong": _("Makpong"),
+    "cambodian": _("Ouk Chaktrang"),
+    "sittuyin": _("Sittuyin"),
+    "asean": _("ASEAN"),
+    "shogi": _("Shogi"),
+    "minishogi": _("Minishogi"),
+    "kyotoshogi": _("Kyoto Shogi"),
+    "dobutsu": _("Dobutsu"),
+>>>>>>> fe6702db28c00ed0ef482e461ce11792c741d575
     # Gorogoro is superseded by Gorogoro Plus
     # "gorogoro",
     "coffeehill": _("Coffeehill"),

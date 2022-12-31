@@ -1,0 +1,113 @@
+<h1 id="chakhttpsgithubcomgbtamipychess-variantsblobmasterstaticiconschaksvg-chak"><img src="https://github.com/gbtami/pychess-variants/blob/master/static/icons/Chak.svg" alt="Chak" /> Chak</h1>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/Chak.png" alt="Chak" /></p>
+<h2 id="background">Background</h2>
+<p>The game of chess first arose from India (or so the common theory states), from where it evolved into western Chess in Persia where it spread to Europe and developed its modern form. East Asia has multiple rich forms of chess that offer something new but also infuse their culture into it. Many cultures throughout the world have a chess of their own. However, what about the native peoples of the Americas? Mesoamerica once had great empires. What if they had a chess of their own? </p>
+<p>Chak is a game designed by Couch Tomato in 2021 specifically to answer this hypothetical question. The design philosophy was to start from scratch and use only the common elements from all forms of chess: a king, a rook-type piece, a knight-like piece, and some sort of pawns; the rest would develop organically infusing a specific Mesoamerican culture -- in this case, the Maya. For example, for the Maya and other Mesoamerican cultures, the native religion with ritual sacrifice was a fundamental part of society; the concept of an offering to the gods as well as the large temples are a key part of the game. </p>
+<p>The name Chak itself is derived from the Mayan God Chaac, the rain deity who possesses war-like fury. This matches the setting of Chak, which is a battlefield along a river. Finally, two words of warfare in Mayan epics include “Chuc-ah” (capture) and “Ch’ak” (decapitation).  In Chak, these are utilized as the win conditions of altar mate, and checkmate, respectively.</p>
+<h2 id="introduction-and-general-rules">Introduction and General Rules</h2>
+<p>There are two sides, designated white and green, respectively. White moves first.</p>
+<h3 id="board">Board</h3>
+<p>Chak is played on a 9x9 board as seen below:</p>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/ChakBoard.png" alt="Chak" /></p>
+<p>There are three special regions:</p>
+<p>-<strong>River</strong>, a special rank that marks the boundary for promotion. When certain pieces (the king and the pawn) move into the river, they promote. However, <em>they cannot move back behind the river</em>. Promoted pieces are committed to moving in the river and enemy side of the board for the rest of the game!</p>
+<p>-<strong>Temple</strong>, a 3x3 region that has no special function. However, this symbolically represents the start of the king and contains the altar, which is described next. Strategically, the temple is important because many special tactics take place in this region.</p>
+<p>-<strong>Altar</strong>, the central square of the temple. Moving your king into the enemy’s altar is one of the main methods of victory.</p>
+<h3 id="goals-of-the-game">Goals of the Game</h3>
+<p>There are four ways to win:</p>
+<p><strong>Checkmate</strong> - Put the king in check with no legal moves.</p>
+<p><strong>Stalemate</strong> - A player with no legal moves loses (unlike in Chess, where it is a draw). This is considered a subset of checkmate in Chak.</p>
+<p><strong>Altar mate</strong> - Move your promoted king to the opponent’s altar without being in check to win.</p>
+<p><strong>Resignation</strong> - Your opponent resigns.</p>
+<p>Other game-end conditions result in a draw:</p>
+<p><strong>Repetition</strong> - The same position is repeated three times.</p>
+<p><strong>50 moves</strong> - A draw can be claimed if no capture has been made in the last 50 moves.</p>
+<p><strong>Draw offering</strong> - A player offers a draw and the other player accepts.</p>
+<h2 id="pieces">Pieces</h2>
+<h3 id="king-k">King (K)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/ChakKing.png" alt="King" /></p>
+<p>The King (<em>Ajaw</em>, which rhymes with Dachau) moves like a king in most classic forms of chess: one square in any direction. However, what is unique about the king in Chak is that it can promote upon reaching the river.</p>
+<h3 id="divine-king-d">Divine King (D)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/DivineKing.png" alt="Divine King" /></p>
+<p>The Divine King moves up to <em>two</em> squares in any direction. It can also pass through squares that are threatened by the opponent’s pieces (in other words, it is not like the Western Chess king that cannot castle through check). Remember that as a promoted piece, it cannot go back beyond the river! The divine king has the ability to end the game by reaching the altar without moving into check. Because of its range, the divine king has the ability to deliver checkmate on an unpromoted king.</p>
+<p>Note that the symbol used only differs slightly from the king’s. They are meant to be the same, but the slight difference is to help players see the promotion and also for the two types of king to be distinct on the board editor.</p>
+<h3 id="jaguar-j">Jaguar (J)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/Jaguar.png" alt="Jaguar" /></p>
+<p>The Jaguar moves like a hybrid knight and king: in detail, that is either 1) a leaping movement going two spaces in one direction and then one perpendicular to make an L shape, or 2) moving one step forward in any direction. This is generically also referred to as a “centaur” piece, and is the same as the General from Shogun Chess and Kheshig from Orda Chess. </p>
+<p>The Jaguar is the most powerful piece in Chak, and its ability to fork multiple pieces make it incredibly dangerous.</p>
+<h3 id="quetzal-q">Quetzal (Q)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/QuetzalRange.png" alt="Quetzal range" /><br />
+The Quetzal is a tricky piece; it is similar to the Chess queen in that it can move any number of squares in any direction (orthogonally or diagonally)… <em>However</em>, it needs to hop over an intervening piece first to do so. For those familiar with Janggi, this is similar to the cannon in that game, but with the addition of diagonal movement and without the restrictions of being unable to interact with another cannon.</p>
+<p>The Quetzal is the second most powerful piece in Chak, but loses value significantly in the endgame.<br />
+<img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/QuetzalLegal.png" alt="Quetzal example" /></p>
+<p><em>Example</em>: In the following image, the quetzal can move the following spaces (red circle indicates capture).</p>
+<h3 id="shaman-s">Shaman (S)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/Shaman.png" alt="Shaman" /></p>
+<p>The Shaman moves one space diagonally or one space orthogonally forward or backwards.</p>
+<p>The Shaman is one of the weakest pieces and is typically used more defensively due to its slow movement.</p>
+<p>Note that the piece symbol is shaped to help remind you of its movement.</p>
+<h3 id="vulture-v">Vulture (V)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/Vulture.png" alt="Vulture" /></p>
+<p>The Vulture is identical to the Chess Knight:  a leaping movement going two spaces in one direction and then one perpendicular to make an L shape.</p>
+<h3 id="serpent-r">Serpent (R)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/Serpent.png" alt="Serpent" /></p>
+<p>The Serpent is identical to the Chess Rook:  orthogonal movement any number of spaces. This is the third strongest piece, after the Jaguar and Quetzal.</p>
+<h3 id="pawn-p">Pawn (P)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/ChakPawn.png" alt="Pawn" /></p>
+<p>The Pawn can move either one square forward or one square sideways without capturing. To capture, it attacks one of the two forward diagonal squares. This is the same as a western Chess pawn, but with the added ability to move sideways. Once the pawn reaches the river, it promotes into a promoted pawn, or Warrior.</p>
+<h3 id="warrior-w">Warrior (W)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/ChakWarrior.png" alt="Warrior" /></p>
+<p>The Warrior (or Promoted Pawn) moves exactly like a shaman: one space diagonally or one space orthogonally forward or backwards. Unlike the shaman, it cannot move backwards across the river.</p>
+<p>Note that the symbol used only differs slightly from the pawn’s. They are meant to be the same, but the slight difference is to help players see the promotion and also for the two types of pawns to be distinct on the board editor.</p>
+<h3 id="offering-o">Offering (O)</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/Offering.png" alt="Offering" /></p>
+<p>The Offering does not move or capture; it blocks the altar until captured. The piece exists not only for thematic purposes (serving as the offering at each player’s own altar), but also serves as a mount for the quetzal. Finally, because of its position, it also helps prevent your altar from a lone divine king if your own king has not left the temple, potentially forcing a draw if all other pieces are off the board. Without the offering, the divine king would be able to displace the defending king and take the altar.</p>
+<h2 id="piece-valuation">Piece valuation</h2>
+<p>Accurate piece values are unknown.  However, the following piece ranking is generally accepted: Jaguar &gt; Quetzal &gt; Serpent &gt; Vulture &gt; Shaman &gt; Warrior &gt; Pawn.</p>
+<h2 id="strategy---pieces-and-basics">Strategy - Pieces and Basics</h2>
+<p><strong>Quetzal</strong>: One primary tip for beginners is always pay attention to the lines of sight for the quetzal. Specifically, at the beginning of the game, any piece that moves in front of the quetzal opens it up to an attack on the opposing jaguar, which is a slightly favorable move.</p>
+<p><strong>Jaguar</strong>: Regarding the jaguar, build defenses and prevent the jaguar from crossing the river. If the jaguar crosses before your pieces are coordinated, it can singlehandedly capture multiple pieces with ease.</p>
+<p><strong>Pawns</strong>: Pawns in Chak are actually quite flexible and strong and also threaten promotion very early. Because of all this, they are not as "expendable" as pawns in other games; make sure to get good value if you are wiling to trade off your pawns, as a one pawn difference at the end of the game could make the difference between a victory and loss.</p>
+<p>Tempo is very, very important in Chak, as it ultimately boils down to a race to get your king to the other side. Positional play is also very important. </p>
+<h2 id="strategy---endgames">Strategy - Endgames</h2>
+<p>Endgames often boil down to getting the king to the Altar faster then our opponent. In this section we'll focus mostly on endgames where Divine King is the only attacking piece.</p>
+<h3 id="king-vs-king">King vs King</h3>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/KvsKzugzwang.png" alt="KvsKzugzwang" /></p>
+<p>With the king being the only defender's piece, the win is pretty easy. The attacker only needs to reach a position with their king on the side of the altar, enemy king in the corner with enemy to move. Then the defender is forced to move the king away from the temple and the attacker can move the king to the altar. </p>
+<p>With the offering still there, the attacker can still win, but it's trickier. What the attacker should be aiming for is not altar mate, but rather this stalemate:</p>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/KvsKStalemate.png" alt="KvsKStalemate" /></p>
+<p>An example line on how to force this position goes like this</p>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/KvsKO.png" alt="KvsKO" /></p>
+<ol>
+<li><p>Dd6+ </p></li>
+<li><p>Kf7 Dd7+ </p></li>
+<li><p>Kf2 De8</p></li>
+<li><p>Kf9 Df7+</p></li>
+<li><p>Ke9 De7!</p></li>
+</ol>
+<p>…and we've reached the following position:</p>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/KvsKOzugzwang.png" alt="KvsKOzugzwang" /></p>
+<p>where green is in zugzwang; moving the king to either side allows white to respond with a stalemate.</p>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/KvsKdraw.png" alt="KvsKdraw" /></p>
+<p>However. if the defender has one more piece (except for an immobile quetzal) things change dramatically. No matter if the offering is still there or not, there is no way for the divine king to check the defender's king and cut off all squares within the temple it could go in one move, so green can always either move their other piece, or move the king within the temple. The only thing to be concerned about is blundering the other piece, so it's recommended to keep it on the last 4 ranks as the divine king can never get there. Once it's there defender, can just move (and safely premove) either moving the piece around the last 4 ranks, or the king within the temple, and the attacker is then helpless.</p>
+<h3 id="fortresses">Fortresses</h3>
+<p>Fortress is set up with a piece defending the altar and every piece being defended. Against such a setup, a lone king is helpless. </p>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/Fortresses.png" alt="Fortresses" /></p>
+<p>All those examples are bareboned in a sense that if either side decided to move any of their pieces away from around the temple, they can no longer form a fortress. If both sides have a bareboned fortress like in above diagrams the game is a dead draw. On the other hand, if one side has a bareboned fortress and the other has a fortress plus any extra piece, as long as that extra piece can safely cross the river without being captured and join the attack on the fortress, it's almost always a win for the side with the extra piece.</p>
+<h3 id="other-defenses">Other defenses</h3>
+<h4 id="jaguar">Jaguar</h4>
+<p>In a lone Jaguar vs a Divine King endgame either side can force a draw by repetition<br />
+<img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/JaguarPerpetual.png" alt="JaguarPerpetual" /></p>
+<p>…except when the side with the Jaguar can just ignore their Jaguar being under attack and run their King towards the altar like in this position.</p>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/JaguarPerpetual2.png" alt="JaguarPerpetual2" /></p>
+<p>White wins by just moving their King to c4 or c2 and to the altar on the next move.</p>
+<p>With the Offering still alive, it's a different story. </p>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/JaguarvsKO.png" alt="JaguarvsKO" /></p>
+<p>In this position, green can go 1. Jf9; white's only move to keep attacking the Jaguar is Df7, but after 2. Je9+ Dg then 3. Jd9, then there is no way to attack the Jaguar in one move, and if white spends 2 moves to do so, green has one tempo to do something meaningful on the other side of the board. If white gets their King to f9, then after Jd8, there is again no way to attack in one move, so it's better to get the King to d7 so again we can force the Jaguar to move twice. If the draw by 50 move rule is close it might be important to remember those exact lines to enforce wasting as many moves as possible as green or save as many as white.</p>
+<h4 id="serpent">Serpent</h4>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/SerpentFortress.png" alt="SerpentFortress" /></p>
+<p>The Serpent as a long range piece can easily move back and forth along the second rank, keeping an eye on the altar. If the Divine King stays on squares from which it can reach the altar directly, the Serpent has to stay there and is usually useless in breaking through the enemy fortress. So if green has a fortress as well, it's usually a draw.</p>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/SerpentFortressTrap.png" alt="SerpentFortressTrap" /></p>
+<p>However, moving away from the highlighted squares to harass the Serpent can be costly, like in this position:</p>
+<p><img src="https://github.com/gbtami/pychess-variants/blob/master/static/images/ChakGuide/SerpentFortressTrap2.png" alt="SerpentFortressTrap2" /></p>
+<p>White has abandoned the altar, allowing green to go Re8 and skewering both Shamans. If white moves the King back, e.g. to d7, green takes on e2, and as the Serpent still defends the altar, green is winning. If white tries something different, green can take one of the Shamans and still win.</p>

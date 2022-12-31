@@ -186,6 +186,13 @@ export abstract class GameController extends ChessgroundController implements IC
                 }
             });
             this.chessground.set({ movable: { dests: this.dests }});
+<<<<<<< HEAD
+=======
+
+            if (this.steps.length === 1) {
+                this.chessground.set({ check: (this.ffishBoard.isCheck()) ? this.turnColor : false});
+            }
+>>>>>>> fe6702db28c00ed0ef482e461ce11792c741d575
         }
     }
 
@@ -273,6 +280,10 @@ export abstract class GameController extends ChessgroundController implements IC
 
         this.turnColor = step.turnColor;
         this.fullfen = step.fen;
+
+        if (this.variant.duck) {
+            this.duckChessMove = '';
+        }
 
         if (this.variant.counting) {
             updateCount(step.fen, document.getElementById('misc-infow') as HTMLElement, document.getElementById('misc-infob') as HTMLElement);
