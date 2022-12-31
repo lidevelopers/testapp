@@ -21,7 +21,6 @@ SHIELDS = ["antichess", "losers", "anti_antichess"]
 COFFEEDAY = ["coffeehouse", "coffeehill", "coffee_3check", "coffeerace"]
 
 MONTHLY_VARIANTS = (
-<<<<<<< HEAD
     "antichess",
     "losers",
     "anti_antichess",
@@ -34,36 +33,6 @@ MONTHLY_VARIANTS = (
     "coffeerace",
     "antiplacement",
     "atomic_giveaway_hill",
-=======
-    "dobutsu",
-    "capahouse",
-    "chak",
-    "shogun",
-    "orda",
-    "gorogoroplus",
-    "shouse",
-    "capablanca960",
-    "hoppelpoppel",
-    "grand",
-    "janggi",
-    "seirawan",
-    "empire",
-    "kyotoshogi",
-    "placement",
-    "ordamirror",
-    "capahouse960",
-    "minixiangqi",
-    "synochess",
-    "grandhouse",
-    "shako",
-    "torishogi",
-    "seirawan960",
-    "chennis",
-    "capablanca",
-    "xiangqi",
-    "duck",
-    "shinobi",
->>>>>>> fe6702db28c00ed0ef482e461ce11792c741d575
 )
 
 # Old MONTHLY tournaments, needed to create translated tourney names
@@ -78,24 +47,6 @@ WEEKLY_VARIANTS = (
 # Monthly Variant Tournaments need different TC
 TC_MONTHLY_VARIANTS = {v: (3, 2, 0) for v in MONTHLY_VARIANTS}
 TC_MONTHLY_VARIANTS["duck"] = (3, 5, 0)
-<<<<<<< HEAD
-=======
-
-for v in CATEGORIES["fairy"]:
-    TC_MONTHLY_VARIANTS[v] = (3, 3, 0)
-TC_MONTHLY_VARIANTS["shogun"] = (3, 10, 1)
-
-for v in CATEGORIES["army"]:
-    TC_MONTHLY_VARIANTS[v] = (3, 4, 0)
-TC_MONTHLY_VARIANTS["chak"] = (5, 3, 0)
-
-for v in GRANDS:  # anything with ten ranks, Grand, Xiangqi, etc
-    TC_MONTHLY_VARIANTS[v] = (5, 3, 0)
-TC_MONTHLY_VARIANTS["janggi"] = (5, 15, 1)
-
-for v in CATEGORIES["shogi"]:
-    TC_MONTHLY_VARIANTS[v] = (2, 15, 1)
->>>>>>> fe6702db28c00ed0ef482e461ce11792c741d575
 
 
 def go_month(orig_date, month=1):
@@ -160,7 +111,6 @@ class Scheduler:
             plans.append(Plan(MONTHLY, date, 16, v.rstrip("960"), is_960, base, inc, byo, 90))
 
         plans += [
-<<<<<<< HEAD
             Plan(SHIELD, self.second_monthly(MONDAY), 18, "antichess", True, 3, 2, 0, 180),  # 960
             Plan(SHIELD, self.second_monthly(THURSDAY), 18, "antichess", False, 3, 0, 0, 180),
             Plan(SHIELD, self.second_monthly(SATURDAY), 12, "anti_antichess", False, 3, 2, 0, 180),
@@ -169,19 +119,6 @@ class Scheduler:
             Plan(MONTHLY, self.third_monthly(SATURDAY), 12, "losers", True, 5, 0, 0, 90),  # 960
             Plan(MONTHLY, self.fourth_monthly(SATURDAY), 12, COFFEE, False, 3, 2, 0, 90),
             Plan(WEEKLY, self.next_day_of_week(THURSDAY), 14, ANTI, False, 3, 2, 0, 90),
-=======
-            Plan(SHIELD, self.second_monthly(MONDAY), 18, "crazyhouse", True, 3, 2, 0, 180),  # 960
-            # Plan(SHIELD, self.second_monthly(THURSDAY), 18, "shinobi", False, 3, 4, 0, 180),
-            Plan(SHIELD, self.second_monthly(SATURDAY), 12, "makruk", False, 5, 3, 0, 180),
-            Plan(SHIELD, self.third_monthly(SUNDAY), 12, "atomic", True, 3, 2, 0, 180),  # 960
-            Plan(MONTHLY, self.first_monthly(SATURDAY), 12, "asean", False, 3, 2, 0, 90),
-            # The second Saturday is Makruk Shield
-            Plan(MONTHLY, self.third_monthly(SATURDAY), 12, SEA, False, 3, 2, 0, 90),
-            Plan(MONTHLY, self.fourth_monthly(SATURDAY), 12, "makpong", False, 3, 2, 0, 90),
-            # Plan(WEEKLY, self.next_day_of_week(FRIDAY), 18, "crazyhouse", True, 3, 0, 0, 60),  # 960
-            # Plan(WEEKLY, self.next_day_of_week(TUESDAY), 18, "atomic", True, 3, 0, 0, 60),  # 960
-            Plan(WEEKLY, self.next_day_of_week(THURSDAY), 14, "makruk", False, 3, 2, 0, 90),
->>>>>>> fe6702db28c00ed0ef482e461ce11792c741d575
         ]
 
         return plans

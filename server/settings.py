@@ -9,11 +9,7 @@ from newid import id8
 logging.basicConfig(level=logging.DEBUG)
 
 URI = os.getenv("URI", "http://127.0.0.1:8080")
-<<<<<<< HEAD
 DEV = ("pr" in URI) or ("dev" in URI) or ("gitpod" in URI) or URI.startswith("http:")
-=======
-DEV = ("heroku" in URI) or ("dev" in URI) or URI.startswith("http:")
->>>>>>> fe6702db28c00ed0ef482e461ce11792c741d575
 BR_EXTENSION = ".br" if URI.startswith("https") else ""
 
 REDIRECT_PATH = "/oauth"  # path of oauth callback in app

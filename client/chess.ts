@@ -508,7 +508,6 @@ export const VARIANTS: { [name: string]: Variant } = {
         chess960: true, icon: "♔", icon960: "♔",
     }),
 
-<<<<<<< HEAD
     antishogi: new Variant({
         name: "antishogi", tooltip: () => _("Japanese Chess, and the standard 9x9 version played today with drops and promotions. "),
         startFen: "lnsgkgsnl/1r5b1/ppppppppp/9/9/9/PPPPPPPPP/1B5R1/LNSGKGSNL[-] w 0 1",
@@ -536,27 +535,6 @@ export const VARIANTS: { [name: string]: Variant } = {
             '10-Piece HC': '4k4/9/ppppppppp/9/9/9/PPPPPPPPP/1B5R1/LNSGKGSNL[-] b 0 1'
         },
         icon: "♔",
-=======
-    duck: new Variant({
-        name: "duck", tooltip: () => _("The duck must be moved to a new square after every turn."),
-        startFen: "rnbqkbnr/pppppppp/8/4*3/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
-        board: "standard8x8", piece: "standard",
-        pieceLetters: ["k", "q", "r", "b", "n", "p", "*"],
-        pieceLetters2: ["k", "q", "r", "b", "n", "p"],
-        enPassant: true, duck: true,
-        icon: "🦆",
-    }),
-
-    makruk: new Variant({
-        name: "makruk", tooltip: () => _("Thai Chess. A game closely resembling the original Chaturanga. Similar to Chess but with a different queen and bishop."),
-        startFen: "rnsmksnr/8/pppppppp/8/8/PPPPPPPP/8/RNSKMSNR w - - 0 1",
-        board: "makruk8x8", piece: "makruk",
-        pieceLetters: ["k", "s", "m", "n", "r", "p", "m~" as cg.Letter],
-        promotionOrder: ["m"],
-        counting: "makruk",
-        showPromoted: true,
-        icon: "Q",
->>>>>>> fe6702db28c00ed0ef482e461ce11792c741d575
     }),
 
     coffeehouse: new Variant({
@@ -1085,21 +1063,12 @@ function variantGroupLabel(group: string): string {
         standard: _("Chess Variants"),
         //sea: _("Makruk Variants"),
         shogi: _("Shogi Variants"),
-        //xiangqi: _("Xiangqi Variants"),
         fairy: _("Fairy Piece Variants"),
         army: _("New Army Variants"),
     }
     return groups[group];
 }
 
-export function selectVariant(id: string, selected: string, onChange: EventListener, hookInsert: InsertHook): VNode {
-    return h('select#' + id, {
-        props: { name: id },
-        on: { change: onChange },
-        hook: { insert: hookInsert },
-    },
-        Object.keys(variantGroups).map(g => {
-            const group = variantGroups[g];
             return h('optgroup', { props: { label: variantGroupLabel(g) } }, group.variants.map(v => {
                 const variant = VARIANTS[v];
                 return h('option', {
